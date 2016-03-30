@@ -1,0 +1,21 @@
+From f40db7f85967506d6115e0763cb725823256a627 Mon Sep 17 00:00:00 2001
+From: tovo1996 <b2973985@trbvn.com>
+Date: Wed, 30 Mar 2016 12:01:29 +0200
+Subject: [PATCH] modificato il mio file
+
+---
+ luca.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/luca.txt b/luca.txt
+index 30d74d2..30fb3e2 100644
+--- a/luca.txt
++++ b/luca.txt
+@@ -1 +1 @@
+-test
+\ No newline at end of file
++rinominato luca
+\ No newline at end of file
+-- 
+2.6.1.windows.1
+
