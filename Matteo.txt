@@ -1,4 +1,0 @@
-File di prova ciao...
-Questa volta lavoriamo con Gitflow
-Provo a usare git anche come backup
-Questa volta si fa la pull request
