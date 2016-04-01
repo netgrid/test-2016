@@ -8,7 +8,7 @@ public interface RbTreeElement<T extends Comparable<String>> {
 	public boolean isRed();
 	public RbTreeElement<T> getParent();
 	public Color getColor();
-	public RbTreeElement<T> getLeft();
+	public RbTreeElement<T> getLeft();	
 	public RbTreeElement<T> getRight();
 	
 	public void setLeft(RbTreeElement<T> left);
