@@ -1,6 +1,6 @@
 package it.netgrid.rbtrees;
 
-public class RbTree<T extends Comparable<T>> {
+public class RbTree<T extends Comparable<String>> {
 
 	private void leftRotate(RbTreeElement<T> element) {}
 	private void rightRotate(RbTree<T> element) {}

@@ -1,6 +1,6 @@
 package it.netgrid.rbtrees;
 
-public interface RbTreeElement<T extends Comparable<T>> {
+public interface RbTreeElement<T extends Comparable<String>> {
 
 	public enum Color{BLACK,RED}
 	
