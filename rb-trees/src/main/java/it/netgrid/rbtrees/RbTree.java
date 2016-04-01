@@ -13,10 +13,33 @@ public class RbTree<T extends Comparable<String>> {
 	}
 
 	private void insertFixup(RbTreeElement<T> element) {
-		while (element.isRed()){
-		    do
-		    	if(element.getParent(z)==left(element.getParent(element.getParent(z)))){
-		    		y = right(element.getParent(element.getParent(z)));
+		while (element.getParent().isRed()){
+		    do{
+		    	if(element.getParent().getParent().isRed()){
+		    		setParent(element).setColor(Color.BLACK);
+		    		element.getParent().getParent().setColor(Color.BLACK);
+		    		element.getParent().getParent().getParent().setColor(Color.RED);
+		    		element = element.getParent().getParent().getParent();
+		    		
+		    	} else{
+		    		if(element.getRight() && element.getParent().getLeft()){
+		    			leftRotate(element.getParent());
+		    			element = element.getLeft();
+		    		}else if(element.getRight() && element.getParent().getRight()){
+		    			rightRotate(element.getParent());
+		    			element = element.getRight();
+		    		}
+		    		setParent(element).setColor(Color.BLACK);
+		    		setParent(element).setParent(element).setParent(element).setColor(Color.RED);
+		    		if(element.getLeft()){
+		    			rightRotate(element.getParent().getParent().getParent());
+		    		}else{
+		    			leftRotate(element.getParent().getParent().getParent());
+		    		}
+		    	}
+		    }while(true);
+		    		
+		    		/**y = right(element.getParent(element.getParent(z)));
 		    		
 		    	}if(color.isRed(y)){
 		    		color(element.getParent(z))= Color.BLACK; 
@@ -39,9 +62,15 @@ public class RbTree<T extends Comparable<String>> {
 		    		color(element.getParent(element.getParent(z))) = Color.RED;
 		    		leftRotate();
 		    		
-		    	}
+		    	}*/
 		}
-		color(root(element)) = Color.BLACK;
+		    		
+		root.setColor(Color.BLACK);
+	}
+
+	private RbTreeElement<T> setParent(RbTreeElement<T> element) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	private void deleteFixup(RbTreeElement<T> element) {
