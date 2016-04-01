@@ -14,6 +14,29 @@ public class RbTree<T extends Comparable<String>> {
 	}
 
 	private void deleteFixup(RbTreeElement<T> element) {
+		
+		
+		while(element!=root&&element.isBlack()==true){
+			
+			if(element==element.getParent().getLeft()){
+				RbTreeElement<T> w=element.getParent().getRight();
+				if(w.isRed()){
+					w.setColor(Color BLACK);
+					element.getParent().setColor(RED);
+					leftRotate(element.getParent());
+					w=element.getParent().getRight();
+				}
+				
+				if(w.getLeft().isBlack()&&w.getRight().isBlack()){
+					w.setColor(RED);
+					
+				}
+			}
+			
+			
+		}
+		
+		
 	}
 
 	public void insert(T element) {
