@@ -27,9 +27,10 @@ public class RbTree<T extends Comparable<String>> {
 	}
 
 	public RbTreeElement<T> getRoot() {
-		return null;
+		return root;
 	}
 
 	private void setRoot(RbTreeElement<T> root) {
+		this.root = root;
 	}
 }

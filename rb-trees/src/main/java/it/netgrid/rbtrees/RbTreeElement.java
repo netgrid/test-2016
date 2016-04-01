@@ -10,5 +10,10 @@ public interface RbTreeElement<T extends Comparable<String>> {
 	public Color getColor();
 	public RbTreeElement<T> getLeft();
 	public RbTreeElement<T> getRight();
+	
+	public void setLeft(RbTreeElement<T> left);
+	public void setRight(RbTreeElement<T> right);
+	public void setColor(Color color);
+	
 	public T getElement();
 }
