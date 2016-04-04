@@ -17,5 +17,5 @@ public class RbTreeMethodTest {
 		this.classUnderTest = new RbTree<BasicRbTreeDecorator<Object>>();
 	}
 	
-	@
+	
 }
