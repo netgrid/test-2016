@@ -8,9 +8,9 @@ public class RbTree<T extends Comparable<String>> {
 		RbTreeElement<T> y;
 		RbTreeElement<T> x;
 		RbTreeElement<T> z;// x parent
-		y=element.getRight();
-		x=element.getRight();
-		x=y.getLeft();
+		y=element.getRight(); 
+		x=element.getRight(); 
+		x=y.getLeft(); // sposto il sottoalbero sinistro di y nel sottoalbero di destro di x
 		
 		if(x!= null){
 			x=y.getParent().getLeft();
