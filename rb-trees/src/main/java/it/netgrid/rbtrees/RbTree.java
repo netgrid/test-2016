@@ -35,7 +35,7 @@ public class RbTree<T extends Comparable<String>> {
 			}
 		}
 		element.setParent(y);
-		if (!y.equals(null)) {
+		if (y.equals(null)) {
 			this.setRoot(element);
 		}
 		else if (element.getElement().toString().compareTo(y.getElement().toString()) == -1) {
@@ -49,7 +49,7 @@ public class RbTree<T extends Comparable<String>> {
 		element.setRight(null);
 		element.setColor(Color.RED);
 		
-		//chiamata insertFixup
+		
 		insertFixup(element);
 	}
 
