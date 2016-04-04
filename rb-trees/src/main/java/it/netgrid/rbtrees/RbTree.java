@@ -1,5 +1,7 @@
 package it.netgrid.rbtrees;
 
+import it.netgrid.rbtrees.RbTreeElement.Color;
+
 public class RbTree<T extends Comparable<String>> {
 
 	private RbTreeElement<T> root;
@@ -15,28 +17,45 @@ public class RbTree<T extends Comparable<String>> {
 
 	private void deleteFixup(RbTreeElement<T> element) {
 		
+		RbTreeElement<T> w; 
 		
 		while(element!=root&&element.isBlack()==true){
 			
 			if(element==element.getParent().getLeft()){
-				RbTreeElement<T> w=element.getParent().getRight();
+				 w=element.getParent().getRight();
 				if(w.isRed()){
-					w.setColor(Color BLACK);
-					element.getParent().setColor(RED);
+					w.setColor(Color.BLACK);
+					element.getParent().setColor(Color.RED);
 					leftRotate(element.getParent());
 					w=element.getParent().getRight();
 				}
 				
 				if(w.getLeft().isBlack()&&w.getRight().isBlack()){
-					w.setColor(RED);
+					w.setColor(Color.RED);
+					element = element.getParent();
+				}
+				
+				else{ if (w.getRight().isBlack()){
+						w.getLeft().setColor(Color.BLACK);
+						w.setColor(Color.RED);
+						rightRotate(w);
+						w = element.getParent().getRight();
+						w.setColor(element.getParent().getColor());
+						element.getParent().setColor(Color.BLACK);
+				        w.getRight().setColor(Color.BLACK);
+				        leftRotate(element.getParent());
+				        element = root;
+					
+				}
+				else {
 					
 				}
 			}
-			
+			}
 			
 		}
 		
-		
+		element.setColor(Color.BLACK);
 	}
 
 	public void insert(T element) {
