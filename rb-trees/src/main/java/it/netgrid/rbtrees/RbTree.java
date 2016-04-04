@@ -1,5 +1,8 @@
 package it.netgrid.rbtrees;
 
+import java.awt.Color;
+import java.util.List;
+
 public class RbTree<T extends Comparable<String>> {
 
 	private RbTreeElement<T> root;
@@ -52,33 +55,54 @@ public class RbTree<T extends Comparable<String>> {
 		return result;
 	}
 	
-	public void delete(RbTreeElement<T> element) {
+	//funzione che elemina un nodo dall'albero
+	public RbTreeElement<T> delete(RbTreeElement<T> elementZ) {
 		RbTreeElement<T> result;
-		if((element.getLeft().equals(null))&&(element.getRight().equals(null))){
-			result= element;	
+		RbTreeElement<T> elementX;
+		
+		//1-6----------------------------------------------------------------------------------------------|
+		if((elementZ.getLeft().equals(null))&&(elementZ.getRight().equals(null))){
+			result= elementZ;	
 		}
 		else{
-			result=treeSuccessor(element);
+			result=treeSuccessor(elementZ);
 		}
 		if(!(result.getLeft().equals(null))){
-			element=result.getLeft();
+			elementX=result.getLeft();
 		}
 		else{
-			element=result.getRight();
+			elementX=result.getRight();
 		}
 		
+		//7------------------------------------------------------------------------------------------------|
+		elementX.setParent(result.getParent());
 		
-		element.setParent(result.getParent());
+		//8-12---------------------------------------------------------------------------------------------|
 		if(result.getParent().equals(null)){
-			this.setRoot(element);
+			this.setRoot(elementX);
 		}
 		else if (result.equals(result.getParent().getLeft())) {
-			result.getParent().setLeft(element);
+			result.getParent().setLeft(elementX);
 		}
 		else {
-			result.getParent().setRight(element);
+			result.getParent().setRight(elementX);
 		}
 		
+		//13-15--------------------------------------------------------------------------------------------|
+		if(!(result.equals(elementZ))){
+			//copia dati satellite
+			elementZ.setColor(result.getColor());
+			elementZ.setLeft(result.getRight());
+			elementZ.setRight(result.getRight());
+			elementZ.setParent(result.getParent());
+		}
+		
+		//16-17--------------------------------------------------------------------------------------------|
+		if(result.getColor().equals(Color.BLACK)){
+			deleteFixup(elementX);
+		}
+		
+		return result;
 	}
 
 	public T get(String element) {
@@ -91,5 +115,9 @@ public class RbTree<T extends Comparable<String>> {
 
 	private void setRoot(RbTreeElement<T> root) {
 		this.root = root;
+	}
+	
+	public List<T> getList(String element) {
+		return null;
 	}
 }
