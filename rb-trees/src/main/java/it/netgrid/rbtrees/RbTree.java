@@ -21,6 +21,11 @@ public class RbTree<T extends Comparable<String>> {
 	}
 
 	public void delete(T element) {
+		/*
+		if(element.getLeft().equals()){
+			
+		}
+		*/
 	}
 
 	public T get(String element) {
