@@ -21,19 +21,19 @@ public class RbTreeInsertTest {
 	@Test
 	public void testInsertA() {
 		
-		//assertThat();
+		//test A
 	}
 	
 	@Test
 	public void testInsertB() {
 	
-		//assertThat();
+		//test B
 	}
 	
 	@Test
 	public void testInsertC() {
 
-		//assertThat();
+		//test C
 	}
 	
 	
