@@ -18,6 +18,7 @@ public class DeleteFixUp {
 		this.classUnderTest = new RbTree<BasicRbTreeDecorator<Object>>();
 		this.fairy = Fairy.create();
 	}
+	
 	public void deleteFixup(RbTreeElement<BasicRbTreeDecorator<Object>> element) {
 
 		RbTreeElement<BasicRbTreeDecorator<Object>> w;
@@ -88,4 +89,5 @@ public class DeleteFixUp {
 
 		element.setColor(Color.BLACK);
 	}
+
 }
