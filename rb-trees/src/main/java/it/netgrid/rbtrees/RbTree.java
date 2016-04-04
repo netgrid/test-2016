@@ -37,7 +37,7 @@ public class RbTree<T extends Comparable<String>> {
 		    			leftRotate(element.getParent().getParent().getParent());
 		    		}
 		    	}
-		    }while(true);
+		    } while(true);
 		    		
 		    		/**y = right(element.getParent(element.getParent(z)));
 		    		
