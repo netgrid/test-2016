@@ -25,8 +25,7 @@ public class RbTree<T extends Comparable<String>> {
 		return result;
 	}
 
-
-	private void leftRotate(RbTreeElement<T> element) {
+	public void leftRotate(RbTreeElement<T> element) {
 	}
 
 	public void rightRotate(RbTreeElement<T> element) {
@@ -36,7 +35,12 @@ public class RbTree<T extends Comparable<String>> {
 		
 	}
 
+<<<<<<< HEAD
+	private void deleteFixup(RbTreeElement<T> element) {
+		
+=======
 	public void deleteFixup(RbTreeElement<T> element) {
+>>>>>>> develop
 	}
 
 	public void insert(T element) {
