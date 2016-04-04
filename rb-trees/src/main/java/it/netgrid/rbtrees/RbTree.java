@@ -66,7 +66,19 @@ public class RbTree<T extends Comparable<String>> {
 		else{
 			element=result.getRight();
 		}
+		
+		
 		element.setParent(result.getParent());
+		if(result.getParent().equals(null)){
+			this.setRoot(element);
+		}
+		else if (result.equals(result.getParent().getLeft())) {
+			result.getParent().setLeft(element);
+		}
+		else {
+			result.getParent().setRight(element);
+		}
+		
 	}
 
 	public T get(String element) {
