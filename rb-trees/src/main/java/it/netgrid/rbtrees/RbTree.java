@@ -5,7 +5,7 @@ import java.util.List;
 public class RbTree<T extends Comparable<String>> {
 
 	private RbTreeElement<T> root;
-<<<<<<< HEAD
+
 	
 	private void leftRotate(RbTreeElement<T> element) {
 		RbTreeElement<T> y;
@@ -53,14 +53,9 @@ public class RbTree<T extends Comparable<String>> {
 		}
 		y.setRight(element);										//Pone x a destra di y 
 		element.setParent(y);
-=======
-
-	public void leftRotate(RbTreeElement<T> element) {
 	}
 
-	public void rightRotate(RbTreeElement<T> element) {
->>>>>>> develop
-	}
+
 
 	public void insertFixup(RbTreeElement<T> element) {
 		
