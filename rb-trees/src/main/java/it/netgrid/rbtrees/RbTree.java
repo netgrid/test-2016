@@ -1,5 +1,7 @@
 package it.netgrid.rbtrees;
 
+import java.util.List;
+
 public class RbTree<T extends Comparable<String>> {
 
 	private RbTreeElement<T> root;
@@ -75,5 +77,9 @@ public class RbTree<T extends Comparable<String>> {
 
 	private void setRoot(RbTreeElement<T> root) {
 		this.root = root;
+	}
+	
+	public List<T> getList(String element) {
+		return null;
 	}
 }
