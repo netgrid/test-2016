@@ -2,6 +2,8 @@ package it.netgrid.rbtrees;
 
 import java.util.List;
 
+import it.netgrid.rbtrees.RbTreeElement.Color;
+
 public class RbTree<T extends Comparable<String>> {
 
 	private RbTreeElement<T> root;
