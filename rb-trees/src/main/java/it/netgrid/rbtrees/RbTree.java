@@ -23,32 +23,33 @@ public class RbTree<T extends Comparable<String>> {
 
 	public void insert(RbTreeElement<T> element) {
 		RbTreeElement<T> y = null;
-		RbTreeElement<T> x = getRoot();
+		RbTreeElement<T> x = this.getRoot();
 		
-		while(!x.equals(null)){
+		while (!x.equals(null)) {
 			y = x;
-			if(element.getElement().toString().compareTo(x.getElement().toString()) < 0){
+			if (element.getElement().toString().compareTo(x.getElement().toString()) < 0) {
 				x = x.getLeft();
 			}
-			else{
+			else {
 				x = x.getRight();
 			}
 		}
 		element.setParent(y);
-		if(!y.equals(null)){
-			setRoot(element);
+		if (!y.equals(null)) {
+			this.setRoot(element);
 		}
-		else if (element.getElement().toString().compareTo(y.getElement().toString()) < 0){
+		else if (element.getElement().toString().compareTo(y.getElement().toString()) < 0) {
 			y.setLeft(element);
 		}
-		else{
+		else {
 			y.setRight(element);
 		}
 		
 		element.setLeft(null);
 		element.setRight(null);
 		element.setColor(Color.RED);
-		// RB-INSERT-FIXUP
+		
+		// insertFixup(RbTreeElement<T> element);
 	}
 
 	public void delete(T element) {
