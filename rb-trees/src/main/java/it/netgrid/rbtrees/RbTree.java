@@ -29,6 +29,7 @@ public class RbTree<T extends Comparable<String>> {
 	}
 
 	private void insertFixup(RbTreeElement<T> element) {
+		
 	}
 
 	private void deleteFixup(RbTreeElement<T> element) {
