@@ -3,8 +3,18 @@ package it.netgrid.rbtrees;
 public class RbTree<T extends Comparable<String>> {
 
 	private RbTreeElement<T> root;
-
+	
 	private void leftRotate(RbTreeElement<T> element) {
+		RbTreeElement<T> y;
+		RbTreeElement<T> x;
+		y=element.getRight();
+		x=element.getRight();
+		x=y.getLeft();
+		
+		if(x!= root){
+			
+		}
+		
 	}
 
 	private void rightRotate(RbTreeElement<T> element) {
