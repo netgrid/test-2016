@@ -5,6 +5,9 @@ public class RbTree<T extends Comparable<String>> {
 	private RbTreeElement<T> root;
 
 	private void leftRotate(RbTreeElement<T> element) {
+	}
+
+	private void rightRotate(RbTreeElement<T> element) {
 		RbTreeElement<T> y = element.getLeft();						//Imposto y
 		element.setLeft(y.getRight());								//Sposto il sottoalbero destro di x nel sottoalbero 
 		if(y.getRight() != null){									//sinistro sinistro di x
@@ -24,9 +27,6 @@ public class RbTree<T extends Comparable<String>> {
 		}
 		y.setRight(element);										//Pone x a destra di y 
 		element.setParent(y);
-	}
-
-	private void rightRotate(RbTreeElement<T> element) {
 	}
 
 	private void insertFixup(RbTreeElement<T> element) {
