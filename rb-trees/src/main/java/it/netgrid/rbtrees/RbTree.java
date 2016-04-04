@@ -13,58 +13,44 @@ public class RbTree<T extends Comparable<String>> {
 	}
 
 	private void insertFixup(RbTreeElement<T> element) {
-		while (element.getParent().isRed()){
-		    do{
-		    	if(element.getParent().getParent().isRed()){
-		    		setParent(element).setColor(Color.BLACK);
-		    		element.getParent().getParent().setColor(Color.BLACK);
-		    		element.getParent().getParent().getParent().setColor(Color.RED);
-		    		element = element.getParent().getParent().getParent();
-		    		
-		    	} else{
-		    		if(element.getRight() && element.getParent().getLeft()){
-		    			leftRotate(element.getParent());
-		    			element = element.getLeft();
-		    		}else if(element.getRight() && element.getParent().getRight()){
-		    			rightRotate(element.getParent());
-		    			element = element.getRight();
-		    		}
-		    		setParent(element).setColor(Color.BLACK);
-		    		setParent(element).setParent(element).setParent(element).setColor(Color.RED);
-		    		if(element.getLeft()){
-		    			rightRotate(element.getParent().getParent().getParent());
-		    		}else{
-		    			leftRotate(element.getParent().getParent().getParent());
-		    		}
-		    	}
-		    } while(true);
-		    		
-		    		/**y = right(element.getParent(element.getParent(z)));
-		    		
-		    	}if(color.isRed(y)){
-		    		color(element.getParent(z))= Color.BLACK; 
-		    		color(y) = Color.BLACK;
-		    		color(element.getParent(element.getParent(z)))= Color.RED;
-		    		z = element.getParent(element.getParent(z));
-		    	}
-		    	else if(z =element.getRight(element.getParent(z))){
-		    		z = element.getParent(z);
-		    		leftRotate(); 
-		    		color(element.getParent(z)) = Color.BLACK;
-		    		color(element.getParent(element.getParent(z))) = Color.RED;
-		    		rightRotate(element, element.getParent(element.getParent(z)));
-		    		
-		    	}
-		    	else{
-		    		z = element.getParent(z);
-		    		rightRotate(element, element.getParent(element.getParent(z))); 
-		    		color(element.getParent(z)) = Color.BLACK;
-		    		color(element.getParent(element.getParent(z))) = Color.RED;
-		    		leftRotate();
-		    		
-		    	}*/
+		RbTreeElement<T> y = null;
+		while (element.getParent().isRed()) {
+			if (element.getParent() == element.getParent().getParent().getLeft()) {
+				y = element.getParent().getParent().getRight();
+
+				if (y.isRed()) {
+					element.getParent().setColor(Color.BLACK);
+					y.setColor(Color.BLACK);
+					element.getParent().getParent().setColor(Color.RED);
+					element = element.getParent().getParent();
+
+				} else if (element == element.getParent().getRight()) {
+					element = element.getParent();
+					leftRotate(element);
+				} else {
+					element.getParent().setColor(Color.BLACK);
+					element.getParent().getParent().setColor(Color.RED);
+					rightRotate(element.getParent().getParent());
+
+				}
+			} else {
+				y = element.getParent().getParent().getLeft();
+			}
+			if (y.isRed()) {
+				element.getParent().setColor(Color.BLACK);
+				y.setColor(Color.BLACK);
+				element.getParent().getParent().setColor(Color.RED);
+				element = element.getParent().getParent();
+
+			} else if (element == element.getParent().getLeft()) {
+				element = element.getParent();
+				rightRotate(element);
+			} else {
+				element.getParent().setColor(Color.BLACK);
+				element.getParent().getParent().setColor(Color.RED);
+				leftRotate(element.getParent().getParent());
+			}
 		}
-		    		
 		root.setColor(Color.BLACK);
 	}
 
