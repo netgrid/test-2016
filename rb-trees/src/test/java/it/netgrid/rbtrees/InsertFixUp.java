@@ -43,6 +43,8 @@ public class InsertFixUp {
 		assertThat("same results", result, equalTo(check));
 	}
 */
+	
+	
 	public void insertFixup(RbTreeElement<BasicRbTreeDecorator<Object>> element) {
 		RbTreeElement<BasicRbTreeDecorator<Object>> y = null;
 		while (element.getParent().isRed()) {
