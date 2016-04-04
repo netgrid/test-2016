@@ -3,6 +3,8 @@ package it.netgrid.rbtrees;
 public interface RbTreeElement<T extends Comparable<String>> {
 
 	public enum Color{BLACK,RED}
+
+	
 	
 	public boolean isBlack();
 	public boolean isRed();
@@ -15,6 +17,8 @@ public interface RbTreeElement<T extends Comparable<String>> {
 	public void setLeft(RbTreeElement<T> left);
 	public void setRight(RbTreeElement<T> right);
 	public void setColor(Color color);
+	public void setParent(RbTreeElement<T> parent);
 	
 	public T getElement();
+
 }
