@@ -147,4 +147,16 @@ public class RbTree<T extends Comparable<String>> {
 	public List<T> getList(String element) {
 		return null;
 	}
+	public int compareTo(String o) {
+		if (this.root == null) {
+			if (o == null) {
+				return 0;
+			}
+
+			return -1;
+		}
+
+		return this.root.toString().compareTo(o);
+	}
+
 }
