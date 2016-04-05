@@ -7,7 +7,7 @@ public class RbTree<T extends Comparable<String>> {
 	private RbTreeElement<T> root;
 
 	
-	private void leftRotate(RbTreeElement<T> element) {
+	public void leftRotate(RbTreeElement<T> element) {
 		RbTreeElement<T> y;
 		RbTreeElement<T> x;
 		RbTreeElement<T> z;// x parent
