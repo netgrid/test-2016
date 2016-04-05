@@ -18,10 +18,28 @@ public class RbTreeDeleteFixupTest {
 	}
 	
 	@Test
-	public void testNullCompareToNull() {
+	public void testNull() {
+		RbTree<String> result = RbTreeGenerator.empty();
+		this.classunderTest.deleteFixup(result.getRoot());
+		//assertThat("null equals null", result, equalTo(0));
+		assertThat("null root", result.getRoot(), equalTo(null));
+	}
+	/*
+	@Test
+	public void testOne() {
 		int result = this.classunderTest.compareTo(null);
 		
 		this.classunderTest.deleteFixup(element);
 		assertThat("null equals null", result, equalTo(0));
 	}
+	@Test
+	public void testSix() {
+		int result = this.classunderTest.compareTo(null);
+		
+		this.classunderTest.deleteFixup(element);
+		assertThat("null equals null", result, equalTo(0));
+		
+	}
+*/
 }
+
