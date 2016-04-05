@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import io.codearte.jfairy.Fairy;
+import it.netgrid.rbtrees.RbTreeElement.Color;
 
 public class RbTreeDeleteFixupTest {
 	RbTree<String> classunderTest;
@@ -19,27 +20,44 @@ public class RbTreeDeleteFixupTest {
 	
 	@Test
 	public void testNull() {
-		RbTree<String> result = RbTreeGenerator.empty();
-		this.classunderTest.deleteFixup(result.getRoot());
+		 classunderTest = RbTreeGenerator.empty();
+		this.classunderTest.deleteFixup(classunderTest.getRoot());
 		//assertThat("null equals null", result, equalTo(0));
-		assertThat("null root", result.getRoot(), equalTo(null));
+		assertThat("null root", classunderTest.getRoot(), equalTo(null));
+	}
+	
+	@Test
+	public void testOne() {
+		classunderTest = RbTreeGenerator.one();
+		this.classunderTest.deleteFixup(classunderTest.getRoot());
+		assertThat("root is black", classunderTest.getRoot().getColor(), equalTo(Color.BLACK));
+		assertThat("null left", classunderTest.getRoot().getLeft(), equalTo(null));
+		assertThat("null right", classunderTest.getRoot().getRight(), equalTo(null));
+		
+	}
+
+	@Test
+	public void testSix() {
+		classunderTest = RbTreeGenerator.six();
+		this.classunderTest.deleteFixup(classunderTest.getRoot());
+		assertThat("root is black", classunderTest.getRoot().getColor(), equalTo(Color.BLACK));
+		assertThat("not null left", classunderTest.getRoot().getLeft(), notNullValue());
+		assertThat("not null right", classunderTest.getRoot().getRight(), notNullValue());
+		assertThat("not equal", classunderTest.getRoot().getLeft(), not(equals(classunderTest.getRoot().getRight())));	
 	}
 	/*
 	@Test
-	public void testOne() {
-		int result = this.classunderTest.compareTo(null);
+	public void testSpec() {
+		classunderTest = RbTreeGenerator.six();
 		
-		this.classunderTest.deleteFixup(element);
-		assertThat("null equals null", result, equalTo(0));
-	}
-	@Test
-	public void testSix() {
-		int result = this.classunderTest.compareTo(null);
-		
-		this.classunderTest.deleteFixup(element);
-		assertThat("null equals null", result, equalTo(0));
+		//RbTreeElement<String> left= parent.getLeft();
+		//this.classunderTest.deleteFixup(classunderTest.getRoot());
+		this.classunderTest.deleteFixup(classunderTest.getRoot());
+		assertThat("root is black", classunderTest.getRoot().getColor(), equalTo(Color.BLACK));
+		assertThat("null left", classunderTest.getRoot().getLeft(), equalTo(null));
+		assertThat("null right", classunderTest.getRoot().getRight(), equalTo(null));
 		
 	}
-*/
+	*/
 }
 
