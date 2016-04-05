@@ -17,91 +17,80 @@ public class RbTreeInsertTest {
 	@Before
 	public void init() {
 		this.classUnderTest = new RbTree<BasicRbTreeDecorator<Object>>();
+		
 	}
 	
 	@Test
-	public void testInsertEmpty() {		
-		// albero vuoto
+	public void testInsertEmpty() {		//albero vuoto		
 		RbTree<String> treeTest = RbTreeGenerator.empty();
 		
-		// elemento da inserire
-		BasicRbTreeDecorator<String> elementTest = new BasicRbTreeDecorator<String>("test");
+		BasicRbTreeDecorator<String> elementTest = new BasicRbTreeDecorator<String>(RandomStringUtils.randomAlphabetic(10));
 		treeTest.insert(elementTest);
 		assertThat("one element (root)", treeTest.getRoot(), notNullValue());
+		
 	}
-	
-	
+		
 	@Test
-	public void testInsertOne() {		
-		// albero con un elemento
+	public void testInsertOne() {		//albero con un elemento		
 		RbTree<String> treeTest = RbTreeGenerator.one();
 		
-		// elemento da inserire
-		BasicRbTreeDecorator<String> elementTest = new BasicRbTreeDecorator<String>("test");
-		String eTest = elementTest.toString();
-		treeTest.insert(elementTest);
-		
-		// dipende dall' albero generato casulamente
-		if (treeTest.getRoot().toString().compareTo(elementTest.getElement().toString()) == -1) {
-			assertThat("element appended", treeTest.getRoot().getLeft(), notNullValue());
-		}
-		else {
-			assertThat("element appended", treeTest.getRoot().getRight(), notNullValue());
-		}
-		
-
-	}
-	
-	@Test
-	public void testInsertSix() {
-		// albero con 6 elementi
-		RbTree<String> treeTest = RbTreeGenerator.six();
-		
-		// elemento da inserire
 		BasicRbTreeDecorator<String> elementTest = new BasicRbTreeDecorator<String>(RandomStringUtils.randomAlphabetic(10));
 		treeTest.insert(elementTest);
 		
-		//--RAMO SINISTRO
+		if (treeTest.getRoot().toString().compareTo(elementTest.getElement().toString()) == -1) {
+			assertThat("element appended in left", treeTest.getRoot().getLeft(), notNullValue());
+			assertThat("element absent in right", treeTest.getRoot().getRight(), equalTo(null));
+		}
+		else {
+			assertThat("element appended in right", treeTest.getRoot().getRight(), notNullValue());
+			assertThat("element absent in left", treeTest.getRoot().getLeft(), equalTo(null));
+		}
 		
-		//sx sx sx
+	}
+	
+	@Test
+	public void testInsertSix() {		//albero con 6 elementi
+		RbTree<String> treeTest = RbTreeGenerator.six();
+		
+		BasicRbTreeDecorator<String> elementTest = new BasicRbTreeDecorator<String>(RandomStringUtils.randomAlphabetic(10));
+		treeTest.insert(elementTest);
+		
+		
+		// ROOT LEFT
+		
+		// insert in left-left-left
 		if (treeTest.getRoot().getLeft().getLeft().toString().compareTo(elementTest.getElement().toString()) == -1) {
-			assertThat("not null sx sx sx", treeTest.getRoot().getLeft().getLeft().getLeft(), notNullValue());
-		}
-		
-		//sx sx dx
+			assertThat("not null in left-left-left", treeTest.getRoot().getLeft().getLeft().getLeft(), notNullValue());
+		}		
+		// insert in left-left-right
 		else if (treeTest.getRoot().getLeft().getLeft().toString().compareTo(elementTest.getElement().toString()) == 1) {
-			assertThat("not null sx sx dx", treeTest.getRoot().getLeft().getLeft().getRight(), notNullValue());
-		}
-		
-		//sx dx sx
+			assertThat("not null in left-left-right", treeTest.getRoot().getLeft().getLeft().getRight(), notNullValue());
+		}		
+		// insert in left-right-left
 		else if (treeTest.getRoot().getLeft().getRight().toString().compareTo(elementTest.getElement().toString()) == -1) {
-			assertThat("not null sx dx sx", treeTest.getRoot().getLeft().getRight().getLeft(), notNullValue());
-		}
-		
-		//sx dx dx
+			assertThat("not null in left-right-left", treeTest.getRoot().getLeft().getRight().getLeft(), notNullValue());
+		}		
+		// insert in left-right-right
 		else if (treeTest.getRoot().getLeft().getRight().toString().compareTo(elementTest.getElement().toString()) == 1) {
-			assertThat("not null sx dx dx", treeTest.getRoot().getLeft().getRight().getRight(), notNullValue());
+			assertThat("not null in left-right-right", treeTest.getRoot().getLeft().getRight().getRight(), notNullValue());
 		}
 			
 		
-		//--RAMO DESTRO
+		// ROOT RIGHT
 		
-		//dx sx sx
+		// insert in right-left-left
 		else if (treeTest.getRoot().getRight().getLeft().toString().compareTo(elementTest.getElement().toString()) == -1) {
-			assertThat("not null dx sx sx", treeTest.getRoot().getRight().getLeft().getLeft(), notNullValue());
-		}
-		
-		//dx sx dx
+			assertThat("not null in right-left-left", treeTest.getRoot().getRight().getLeft().getLeft(), notNullValue());
+		}		
+		// insert in right-left-right
 		else if (treeTest.getRoot().getRight().getLeft().toString().compareTo(elementTest.getElement().toString()) == 1) {
-			assertThat("not null dx sx dx", treeTest.getRoot().getRight().getLeft().getRight(), notNullValue());
-		}
-		
-		//dx dx 
+			assertThat("not null in right-left-right", treeTest.getRoot().getRight().getLeft().getRight(), notNullValue());
+		}		
+		// insert in right-right
 		else {
-			assertThat("not null dx dx", treeTest.getRoot().getRight().getRight(), notNullValue());
+			assertThat("not null in right-right", treeTest.getRoot().getRight().getRight(), notNullValue());
 		}
-
-		
+	
 	}
 
 	
