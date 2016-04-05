@@ -23,7 +23,7 @@ public class RbTreeLeftTest {
 	
 	@Test
 	public void testLeftRotate() {
-			classUnderTest =RbTreeGenerator.one();
+			classUnderTest =RbTreeGenerator.one();//crea un albero con un nodo
 			this.classUnderTest.leftRotate(classUnderTest.getRoot());
 			assertThat("root is black", classUnderTest.getRoot().getColor(), equalTo(Color.BLACK));
 			assertThat("null left", classUnderTest.getRoot().getLeft(), equalTo(null));
