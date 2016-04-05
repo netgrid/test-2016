@@ -26,7 +26,7 @@ public class RbTreeInsertTest {
 		// elemento da inserire
 		BasicRbTreeDecorator<String> elementTest = new BasicRbTreeDecorator<String>("test");
 		treeTest.insert(elementTest);
-		assertThat("one element (root) is black", treeTest.getRoot().getColor(),  notNullValue());
+		assertThat("one element (root)", treeTest.getRoot(), notNullValue());
 	}
 	
 	
@@ -37,11 +37,17 @@ public class RbTreeInsertTest {
 		
 		// elemento da inserire
 		BasicRbTreeDecorator<String> elementTest = new BasicRbTreeDecorator<String>("test");
+		String eTest = elementTest.toString();
 		treeTest.insert(elementTest);
 		
-		// dipende dall' albero generato 
-		assertThat("element appended", treeTest.getRoot().getLeft(), notNullValue()); 
-		assertThat("element appended", treeTest.getRoot().getRight(), notNullValue());
+		// dipende dall' albero generato casulamente
+		if (treeTest.getRoot().toString().compareTo(elementTest.getElement().toString()) == -1) {
+			assertThat("element appended", treeTest.getRoot().getLeft(), notNullValue());
+		}
+		else {
+			assertThat("element appended", treeTest.getRoot().getRight(), notNullValue());
+		}
+		
 
 	}
 	
