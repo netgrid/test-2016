@@ -10,7 +10,7 @@ public class RbTree<T extends Comparable<String>> {
 	//procedura che restituisce  un puntatore all'elemeneto minimo del sottoalbero con radice in un nodo x
 	private RbTreeElement<T> treeMinimum(RbTreeElement<T> element){
 		RbTreeElement<T> result=null;
-		while(!(element.getLeft().equals(null))){
+		while(!(element.getLeft()==null)){
 			result=element.getLeft();
 		}
 		return result;
@@ -19,7 +19,7 @@ public class RbTree<T extends Comparable<String>> {
 	//procedura che restituisce  un puntatore all'elemeneto massimo del sottoalbero con radice in un nodo x
 	private RbTreeElement<T> treeMaximum(RbTreeElement<T> element){
 		RbTreeElement<T> result=null;
-		while(!(element.getRight().equals(null))){
+		while(!(element.getRight()==null)){
 			result=element.getRight();
 		}
 		return result;
