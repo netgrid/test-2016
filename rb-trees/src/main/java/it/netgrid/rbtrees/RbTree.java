@@ -58,7 +58,7 @@ public class RbTree<T extends Comparable<String>> {
 	}
 
 	public RbTreeElement<T> setParent(RbTreeElement<T> element) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
