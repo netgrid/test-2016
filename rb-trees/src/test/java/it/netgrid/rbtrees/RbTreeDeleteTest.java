@@ -7,7 +7,7 @@ import static org.hamcrest.Matchers.*;
 
 import org.junit.Before;
 
-public class RbTreeMethodTest {
+public class RbTreeDeleteTest {
 
 	private RbTree<BasicRbTreeDecorator<Object>> classUnderTest;
 	private Fairy fairy;
