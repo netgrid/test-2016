@@ -27,7 +27,7 @@ public class RbTreeGenerator {
 		element.setColor(Color.BLACK);
 		
 		// root child left
-		BasicRbTreeDecorator<String> child = new BasicRbTreeDecorator<String>(multi(base, 3));
+		BasicRbTreeDecorator<String> child = new BasicRbTreeDecorator<String>(multi(base, 2));
 		child.setColor(Color.BLACK);
 		child.setParent(element);
 		element.setLeft(child);
@@ -47,7 +47,7 @@ public class RbTreeGenerator {
 		
 		// root left child right
 		element = retval.getRoot().getLeft();
-		child = new BasicRbTreeDecorator<String>(multi(base, 2));
+		child = new BasicRbTreeDecorator<String>(multi(base, 3));
 		child.setColor(Color.RED);
 		child.setParent(element);
 		element.setRight(child);
