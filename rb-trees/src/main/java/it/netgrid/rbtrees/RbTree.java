@@ -15,7 +15,7 @@ public class RbTree<T extends Comparable<String>> {
 	}
 
 
-	private void insertFixup(RbTreeElement<T> element) {
+	public void insertFixup(RbTreeElement<T> element) {
 		RbTreeElement<T> y = null;
 		while (element.getParent().isRed()) {
 			if (element.getParent() == element.getParent().getParent().getLeft()) {
@@ -57,7 +57,7 @@ public class RbTree<T extends Comparable<String>> {
 		root.setColor(Color.BLACK);
 	}
 
-	private RbTreeElement<T> setParent(RbTreeElement<T> element) {
+	public RbTreeElement<T> setParent(RbTreeElement<T> element) {
 		// TODO Auto-generated method stub
 		return null;
 	}

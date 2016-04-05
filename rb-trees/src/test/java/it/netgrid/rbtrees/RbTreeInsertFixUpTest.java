@@ -23,6 +23,7 @@ public class RbTreeInsertFixUpTest {
 	@Test
 	public void testEmpty() {
 		RbTree<String> output = RbTreeGenerator.empty();
+		this.classUnderTest.insertFixup(output.getRoot());
 		assertThat("null root", output.getRoot(), equalTo(null));
 	}
 	
