@@ -14,6 +14,7 @@ public class RbTree<T extends Comparable<String>> {
 	public void rightRotate(RbTreeElement<T> element) {
 	}
 
+
 	private void insertFixup(RbTreeElement<T> element) {
 		RbTreeElement<T> y = null;
 		while (element.getParent().isRed()) {
@@ -61,7 +62,7 @@ public class RbTree<T extends Comparable<String>> {
 		return null;
 	}
 
-	private void deleteFixup(RbTreeElement<T> element) {
+	public void deleteFixup(RbTreeElement<T> element) {
 
 		RbTreeElement<T> w;
 
@@ -131,6 +132,17 @@ public class RbTree<T extends Comparable<String>> {
 
 		element.setColor(Color.BLACK);
 	}
+
+
+
+
+
+	public void insert(T element) {
+	}
+
+	public void delete(T element) {
+	}
+
 
 	public T get(String element) {
 		return null;
