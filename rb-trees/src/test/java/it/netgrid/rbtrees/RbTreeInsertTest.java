@@ -19,22 +19,45 @@ public class RbTreeInsertTest {
 	}
 	
 	@Test
-	public void testInsertA() {
+	public void testInsertEmpty() {		
+		// albero vuoto
+		RbTree<String> treeTest = RbTreeGenerator.empty();
 		
-		//test A
+		// elemento da inserire
+		BasicRbTreeDecorator<String> elementTest = new BasicRbTreeDecorator<String>("test");
+		treeTest.insert(elementTest);
+		assertThat("one element (root) is black", treeTest.getRoot().getColor(),  notNullValue());
 	}
 	
-	@Test
-	public void testInsertB() {
-	
-		//test B
-	}
 	
 	@Test
-	public void testInsertC() {
+	public void testInsertOne() {		
+		// albero con un elemento
+		RbTree<String> treeTest = RbTreeGenerator.one();
+		
+		// elemento da inserire
+		BasicRbTreeDecorator<String> elementTest = new BasicRbTreeDecorator<String>("test");
+		treeTest.insert(elementTest);
+		
+		// dipende dall' albero generato 
+		assertThat("element appended", treeTest.getRoot().getLeft(), notNullValue()); 
+		assertThat("element appended", treeTest.getRoot().getRight(), notNullValue());
 
-		//test C
 	}
+	
+	@Test
+	public void testInsertSix() {
+		// albero con 6 elementi
+		RbTree<String> treeTest = RbTreeGenerator.six();
+		
+		// elemento da inserire
+		BasicRbTreeDecorator<String> elementTest = new BasicRbTreeDecorator<String>("test");
+		treeTest.insert(elementTest);
+		
+		assertThat("not null right right", treeTest.getRoot().getRight().getRight(), notNullValue());
+		
+	}
+
 	
 	
 	
