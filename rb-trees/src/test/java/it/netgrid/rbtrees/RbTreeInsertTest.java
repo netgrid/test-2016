@@ -87,7 +87,7 @@ public class RbTreeInsertTest {
 		//--RAMO DESTRO
 		
 		//dx sx sx
-		if (treeTest.getRoot().getRight().getLeft().toString().compareTo(elementTest.getElement().toString()) == -1) {
+		else if (treeTest.getRoot().getRight().getLeft().toString().compareTo(elementTest.getElement().toString()) == -1) {
 			assertThat("not null dx sx sx", treeTest.getRoot().getRight().getLeft().getLeft(), notNullValue());
 		}
 		
