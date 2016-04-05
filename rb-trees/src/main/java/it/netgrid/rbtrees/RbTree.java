@@ -60,25 +60,38 @@ public class RbTree<T extends Comparable<String>> {
 		RbTreeElement<T> result;
 		RbTreeElement<T> elementX;
 		
+		
+		//ritorna null se il tree è vuoto
+		if(elementZ==(null)){
+			return null;
+		}
+		//eliminazione radice
+		if(elementZ.getParent()==null){
+			return null;
+		}
+
+		
 		//1-6----------------------------------------------------------------------------------------------|
-		if((elementZ.getLeft().equals(null))&&(elementZ.getRight().equals(null))){
+		if((elementZ.getLeft()==null)&&(elementZ.getRight()==null)){
 			result= elementZ;	
 		}
 		else{
 			result=treeSuccessor(elementZ);
 		}
-		if(!(result.getLeft().equals(null))){
+		if(!(result.getLeft()==null)){
 			elementX=result.getLeft();
 		}
 		else{
 			elementX=result.getRight();
 		}
 		
+		
+		
 		//7------------------------------------------------------------------------------------------------|
 		elementX.setParent(result.getParent());
 		
 		//8-12---------------------------------------------------------------------------------------------|
-		if(result.getParent().equals(null)){
+		if(result.getParent()==null){
 			this.setRoot(elementX);
 		}
 		else if (result.equals(result.getParent().getLeft())) {
