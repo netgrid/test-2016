@@ -36,6 +36,7 @@ public class RbTreeDeleteTest {
 	@Test
 	public void testNoSon() {
 		RbTree<String> output = RbTreeGenerator.six();
+		RbTreeGenerator.writeDotFile(output);
 		RbTreeElement<String> expected = output.getRoot().getLeft().getLeft();
 		assertThat("node deleted", output.delete(output.getRoot().getLeft().getLeft()), equalTo(expected));
 	}
@@ -43,17 +44,19 @@ public class RbTreeDeleteTest {
 	@Test
 	public void testOneSon() {
 		RbTree<String> output = RbTreeGenerator.six();
+		RbTreeGenerator.writeDotFile(output);
 		RbTreeElement<String> expected = output.getRoot().getRight().getLeft();
-		RbTreeElement<String> result = output.delete(output.getRoot().getRight());
 		assertThat("node deleted", output.delete(output.getRoot().getRight()), equalTo(expected));
+		
 		
 	}
 	@Test
 	public void testTwoSon() {
 		RbTree<String> output = RbTreeGenerator.six();
+		RbTreeGenerator.writeDotFile(output);
 		RbTreeElement<String> expected = output.getRoot().getLeft().getLeft();
-		RbTreeElement<String> result = output.delete(output.getRoot().getLeft());
 		assertThat("node deleted", output.delete(output.getRoot().getLeft()), equalTo(expected));
+		
 		
 	}
 	

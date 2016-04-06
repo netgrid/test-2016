@@ -63,11 +63,15 @@ public class RbTree<T extends Comparable<String>> {
 		
 		//ritorna null se il tree è vuoto
 		if(elementZ==(null)){
+			
 			return null;
 		}
+		
+		
 		//eliminazione radice senza figli
 		if(elementZ == this.getRoot()){
 			if((elementZ.getLeft()==null)&&(elementZ.getRight()==null)){
+			
 				return null;
 			}
 		}
@@ -87,7 +91,7 @@ public class RbTree<T extends Comparable<String>> {
 			elementX=result.getRight();
 		}
 		
-		
+		RbTreeGenerator.writeDotFile(this);
 		
 		//7------------------------------------------------------------------------------------------------|
 		if(!(elementX==null)){
@@ -103,11 +107,12 @@ public class RbTree<T extends Comparable<String>> {
 		else {
 			result.getParent().setRight(elementX);
 		}
-		
+		RbTreeGenerator.writeDotFile(this);
 		//13-15--------------------------------------------------------------------------------------------|
 		if(!(result.equals(elementZ))){
 			//copia dati satellite
 			elementZ.setElement(result.getElement());
+			RbTreeGenerator.writeDotFile(this);
 			
 		}
 		
@@ -117,6 +122,7 @@ public class RbTree<T extends Comparable<String>> {
 		}
 		
 		//18-----------------------------------------------------------------------------------------------|
+		RbTreeGenerator.writeDotFile(this);
 		return result;
 	}
 
