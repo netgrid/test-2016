@@ -12,12 +12,12 @@ import io.codearte.jfairy.Fairy;
 import it.netgrid.rbtrees.RbTreeElement.Color;
 
 public class RbTreeInsertFixUpTest{
-	private RbTree<String> classUnderTest;	
+	//private RbTree<String> classUnderTest;	
 	private Fairy fairy;
 	
 	@Before
 	public void init() {
-		this.classUnderTest = new RbTree<String>();
+		//this.classUnderTest = new RbTree<String>();
 		this.fairy = Fairy.create();
 		
 	}
