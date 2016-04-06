@@ -131,8 +131,9 @@ public class RbTree<T extends Comparable<String>> {
 			}
 
 		}
-
+		if(element!=null){
 		element.setColor(Color.BLACK);
+		}
 	}
 
 
