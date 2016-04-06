@@ -44,7 +44,7 @@ public class RbTree<T extends Comparable<String>> {
 
 	public RbTreeElement<T> treeSuccessor(RbTreeElement<T> element){
 		RbTreeElement<T> result;
-		if(element.getRight().equals(null)){
+		if(element.getRight()==null){
 			return treeMinimum(element.getRight());
 		}
 		result=element.getParent();
@@ -65,14 +65,16 @@ public class RbTree<T extends Comparable<String>> {
 		if(elementZ==(null)){
 			return null;
 		}
-		//eliminazione radice
-		if(elementZ.getParent()==null){
-			return null;
+		//eliminazione radice senza figli
+		if(elementZ == this.getRoot()){
+			if((elementZ.getLeft()==null)&&(elementZ.getRight()==null)){
+				return null;
+			}
 		}
 
 		
 		//1-6----------------------------------------------------------------------------------------------|
-		if((elementZ.getLeft()==null)&&(elementZ.getRight()==null)){
+		if((elementZ.getLeft()==null)||(elementZ.getRight()==null)){
 			result= elementZ;	
 		}
 		else{
@@ -88,8 +90,9 @@ public class RbTree<T extends Comparable<String>> {
 		
 		
 		//7------------------------------------------------------------------------------------------------|
+		if(!(elementX==null)){
 		elementX.setParent(result.getParent());
-		
+		}
 		//8-12---------------------------------------------------------------------------------------------|
 		if(result.getParent()==null){
 			this.setRoot(elementX);
@@ -104,10 +107,8 @@ public class RbTree<T extends Comparable<String>> {
 		//13-15--------------------------------------------------------------------------------------------|
 		if(!(result.equals(elementZ))){
 			//copia dati satellite
-			elementZ.setColor(result.getColor());
-			elementZ.setLeft(result.getRight());
-			elementZ.setRight(result.getRight());
-			elementZ.setParent(result.getParent());
+			elementZ.setElement(result.getElement());
+			
 		}
 		
 		//16-17--------------------------------------------------------------------------------------------|

@@ -36,20 +36,24 @@ public class RbTreeDeleteTest {
 	@Test
 	public void testNoSon() {
 		RbTree<String> output = RbTreeGenerator.six();
-		assertThat("node deleted", output.delete(output.getRoot().getLeft().getLeft()), equalTo(output.getRoot().getLeft()));
+		RbTreeElement<String> expected = output.getRoot().getLeft().getLeft();
+		assertThat("node deleted", output.delete(output.getRoot().getLeft().getLeft()), equalTo(expected));
 	}
 	
 	@Test
 	public void testOneSon() {
 		RbTree<String> output = RbTreeGenerator.six();
-		assertThat("node deleted", output.delete(output.getRoot().getRight()), equalTo(output.getRoot().getRight().getLeft()));
+		RbTreeElement<String> expected = output.getRoot().getRight().getLeft();
+		RbTreeElement<String> result = output.delete(output.getRoot().getRight());
+		assertThat("node deleted", output.delete(output.getRoot().getRight()), equalTo(expected));
 		
 	}
 	@Test
 	public void testTwoSon() {
 		RbTree<String> output = RbTreeGenerator.six();
-		
-		assertThat("node deleted", output.delete(output.getRoot().getLeft()), equalTo(output.getRoot().getLeft().getRight()));
+		RbTreeElement<String> expected = output.getRoot().getLeft().getRight();
+		RbTreeElement<String> result = output.delete(output.getRoot().getLeft());
+		assertThat("node deleted", output.delete(output.getRoot().getLeft()), equalTo(expected));
 		
 	}
 	
