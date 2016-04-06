@@ -21,11 +21,12 @@ public class RbTreeInsertTest {
 		
 	}
 	
+	
+	// inserimento di un nodo in un albero vuoto
 	@Test
-	public void testInsertEmpty() {		//albero vuoto		
+	public void testInsertEmpty() {	
 		RbTree<String> treeTest = RbTreeGenerator.empty();
 		BasicRbTreeDecorator<String> elementTest = new BasicRbTreeDecorator<String>(this.fairy.textProducer().latinSentence()); 
-
 		treeTest.insert(elementTest);
 		assertThat("one element (root)", treeTest.getRoot(), notNullValue());
 		assertThat("null left", treeTest.getRoot().getLeft(), equalTo(null));
@@ -33,11 +34,11 @@ public class RbTreeInsertTest {
 		
 	}
 	
-
+	
+	// inserimento di un nodo in un albero composto da un solo elemento
 	@Test
-	public void testInsertOne() {		//albero con un elemento		
-		RbTree<String> treeTest = RbTreeGenerator.one();
-		
+	public void testInsertOne() {		
+		RbTree<String> treeTest = RbTreeGenerator.one();		
 		BasicRbTreeDecorator<String> elementTest = new BasicRbTreeDecorator<String>(this.fairy.textProducer().latinSentence()); 
 		treeTest.insert(elementTest);
 		
@@ -55,10 +56,21 @@ public class RbTreeInsertTest {
 		
 	}
 	
-	@Test
-	public void testInsertSix() {		//albero con 6 elementi
-		RbTree<String> treeTest = RbTreeGenerator.six();
+	
+	// inserimento di un oggetto nullo in un albero
+	@Test (expected = NullPointerException.class)	// mi aspetto un' eccezione (NullPointerException) perchè non posso eseguire operazioni su oggetti nulli
+	public void testInsertNull() {
+		RbTree<String> treeTest = RbTreeGenerator.one();		
+		BasicRbTreeDecorator<String> elementTest = new BasicRbTreeDecorator<String>(null); 	
+		treeTest.insert(elementTest);
 		
+	}
+	
+	
+	// inserimento di un nodo in un albero composto da 6 elementi
+	@Test
+	public void testInsertSix() {
+		RbTree<String> treeTest = RbTreeGenerator.six();		
 		BasicRbTreeDecorator<String> elementTest = new BasicRbTreeDecorator<String>(this.fairy.textProducer().latinSentence()); 
 		treeTest.insert(elementTest);
 		
@@ -86,7 +98,6 @@ public class RbTreeInsertTest {
 			assertThat("null in left-right-left", treeTest.getRoot().getLeft().getRight().getLeft(), equalTo(null));
 		}
 		
-	
 		
 		// ROOT RIGHT
 		

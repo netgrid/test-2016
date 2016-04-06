@@ -24,7 +24,6 @@ public class RbTree<T extends Comparable<String>> {
 	public void insert(RbTreeElement<T> element) {
 		RbTreeElement<T> y = null;
 		RbTreeElement<T> x = this.getRoot();
-		
 		while (x != null) {
 			y = x;
 			if (element.getElement().toString().compareTo(x.getElement().toString()) == -1) {
@@ -34,7 +33,7 @@ public class RbTree<T extends Comparable<String>> {
 				x = x.getRight();
 			}
 		}
-		
+			
 		element.setParent(y);
 		if (y == null) {
 			this.setRoot(element);
@@ -45,14 +44,13 @@ public class RbTree<T extends Comparable<String>> {
 		else {
 			y.setRight(element);
 		}
-		
+			
 		element.setLeft(null);
 		element.setRight(null);
 		element.setColor(Color.RED);
-		
-		
-		//insertFixup(element);
+			
 	}
+
 
 	public void delete(T element) {
 	}
