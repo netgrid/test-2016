@@ -9,11 +9,10 @@ public class RbTree<T extends Comparable<String>> {
 	
 	//procedura che restituisce  un puntatore all'elemeneto minimo del sottoalbero con radice in un nodo x
 	private RbTreeElement<T> treeMinimum(RbTreeElement<T> element){
-		RbTreeElement<T> result=null;
-		while(!(element.getLeft()==null)){
-			result=element.getLeft();
+		while(element.getLeft()!=null){
+			element=element.getLeft();
 		}
-		return result;
+		return element;
 	}
 	
 	//procedura che restituisce  un puntatore all'elemeneto massimo del sottoalbero con radice in un nodo x
@@ -42,13 +41,14 @@ public class RbTree<T extends Comparable<String>> {
 	public void insert(T element) {
 	}
 
+	//funzione per trovare il successo del nodo da eliminare
 	public RbTreeElement<T> treeSuccessor(RbTreeElement<T> element){
 		RbTreeElement<T> result;
-		if(element.getRight()==null){
+		if(element.getRight()!=null){
 			return treeMinimum(element.getRight());
 		}
 		result=element.getParent();
-		while((!(result.equals(null)))&&(element.equals(result.getRight()))){
+		while((result!=null)&&(element.equals(result.getRight()))){
 			element=result;
 			result=result.getParent();
 		}
@@ -91,7 +91,7 @@ public class RbTree<T extends Comparable<String>> {
 			elementX=result.getRight();
 		}
 		
-		RbTreeGenerator.writeDotFile(this);
+		
 		
 		//7------------------------------------------------------------------------------------------------|
 		if(!(elementX==null)){
@@ -107,12 +107,12 @@ public class RbTree<T extends Comparable<String>> {
 		else {
 			result.getParent().setRight(elementX);
 		}
-		RbTreeGenerator.writeDotFile(this);
+		
 		//13-15--------------------------------------------------------------------------------------------|
 		if(!(result.equals(elementZ))){
 			//copia dati satellite
 			elementZ.setElement(result.getElement());
-			RbTreeGenerator.writeDotFile(this);
+			
 			
 		}
 		
@@ -122,7 +122,7 @@ public class RbTree<T extends Comparable<String>> {
 		}
 		
 		//18-----------------------------------------------------------------------------------------------|
-		RbTreeGenerator.writeDotFile(this);
+		//RbTreeGenerator.writeDotFile(this);
 		return result;
 	}
 
