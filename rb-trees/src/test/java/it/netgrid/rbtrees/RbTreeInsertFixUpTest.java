@@ -83,7 +83,7 @@ public class RbTreeInsertFixUpTest{
 		}		
 	
 		else {
-			assertThat("not null in right-right", iTest.getRoot().getRight().getRight(), equalTo(null));
+			assertThat("null in right-right", iTest.getRoot().getRight().getRight(), equalTo(null));
 		}
 	
 	

@@ -8,17 +8,15 @@ public class RbTree<T extends Comparable<String>> {
 
 	private RbTreeElement<T> root;
 
-
 	public void leftRotate(RbTreeElement<T> element) {
 	}
 
 	public void rightRotate(RbTreeElement<T> element) {
 	}
 
-
 	public void insertFixup(RbTreeElement<T> element) {
 		RbTreeElement<T> y = null;
-		while (element.getParent()!=null && element.getParent().isRed()) {
+		while (element.getParent() != null && element.getParent().isRed()) {
 			if (element.getParent() == element.getParent().getParent().getLeft()) {
 				y = element.getParent().getParent().getRight();
 
@@ -55,12 +53,13 @@ public class RbTree<T extends Comparable<String>> {
 				leftRotate(element.getParent().getParent());
 			}
 		}
-		if(root!=null){
-		root.setColor(Color.BLACK);
-		}}
+		if (root != null) {
+			root.setColor(Color.BLACK);
+		}
+	}
 
 	public RbTreeElement<T> setParent(RbTreeElement<T> element) {
-		
+
 		return null;
 	}
 
@@ -131,21 +130,16 @@ public class RbTree<T extends Comparable<String>> {
 			}
 
 		}
-		if(element!=null){
-		element.setColor(Color.BLACK);
+		if (element != null) {
+			element.setColor(Color.BLACK);
 		}
 	}
-
-
-
-
 
 	public void insert(T element) {
 	}
 
 	public void delete(T element) {
 	}
-
 
 	public T get(String element) {
 		return null;
@@ -158,10 +152,11 @@ public class RbTree<T extends Comparable<String>> {
 	public void setRoot(RbTreeElement<T> root) {
 		this.root = root;
 	}
-	
+
 	public List<T> getList(String element) {
 		return null;
 	}
+
 	public int compareTo(String o) {
 		if (this.root == null) {
 			if (o == null) {

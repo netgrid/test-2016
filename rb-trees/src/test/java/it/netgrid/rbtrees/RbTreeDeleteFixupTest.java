@@ -22,7 +22,7 @@ public class RbTreeDeleteFixupTest {
 	public void testNull() {
 		 classunderTest = RbTreeGenerator.empty();
 		this.classunderTest.deleteFixup(classunderTest.getRoot());
-		
+		//assertThat("null equals null", result, equalTo(0));
 		assertThat("null root", classunderTest.getRoot(), equalTo(null));
 	}
 	
@@ -45,19 +45,18 @@ public class RbTreeDeleteFixupTest {
 		assertThat("not null right", classunderTest.getRoot().getRight(), notNullValue());
 		assertThat("not equal", classunderTest.getRoot().getLeft(), not(equals(classunderTest.getRoot().getRight())));	
 	}
-	/*
+	
 	@Test
 	public void testSpec() {
 		classunderTest = RbTreeGenerator.six();
-		
 		//RbTreeElement<String> left= parent.getLeft();
 		//this.classunderTest.deleteFixup(classunderTest.getRoot());
-		this.classunderTest.deleteFixup(classunderTest.getRoot());
+		this.classunderTest.deleteFixup(classunderTest.getRoot().getLeft().getLeft());
 		assertThat("root is black", classunderTest.getRoot().getColor(), equalTo(Color.BLACK));
 		assertThat("null left", classunderTest.getRoot().getLeft(), equalTo(null));
 		assertThat("null right", classunderTest.getRoot().getRight(), equalTo(null));
 		
 	}
-	*/
+	
 }
 
