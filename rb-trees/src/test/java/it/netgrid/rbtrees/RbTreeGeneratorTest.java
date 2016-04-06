@@ -21,7 +21,6 @@ public class RbTreeGeneratorTest {
 		assertThat("root is black", output.getRoot().getColor(), equalTo(Color.BLACK));
 		assertThat("null left", output.getRoot().getLeft(), equalTo(null));
 		assertThat("null right", output.getRoot().getRight(), equalTo(null));
-		
 	}
 	
 	@Test
@@ -30,13 +29,12 @@ public class RbTreeGeneratorTest {
 		assertThat("root is black", output.getRoot().getColor(), equalTo(Color.BLACK));
 		assertThat("not null left", output.getRoot().getLeft(), notNullValue());
 		assertThat("not null right", output.getRoot().getRight(), notNullValue());
-		assertThat("not equal", output.getRoot().getLeft(), not(equals(output.getRoot().getRight())));	
+		assertThat("not equal", output.getRoot().getLeft(), not(equals(output.getRoot().getRight())));
 	}
 	
 	@Test
 	public void testSixMaxAndMin() {
 		RbTree<String> output = RbTreeGenerator.six();
-		
 		this.testSixMaxAndMinSubTree(output.getRoot(), 0);
 	}
 	
