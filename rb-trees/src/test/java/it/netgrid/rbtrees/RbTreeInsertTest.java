@@ -29,13 +29,23 @@ public class RbTreeInsertTest {
 		BasicRbTreeDecorator<String> elementTest = new BasicRbTreeDecorator<String>(this.fairy.textProducer().latinSentence()); 
 		treeTest.insert(elementTest);
 		RbTreeGenerator.writeDotFile(treeTest);
-		assertThat("one element (root)", treeTest.getRoot(), notNullValue());
+		assertThat("one element", treeTest.getRoot(), notNullValue());
 		assertThat("null left", treeTest.getRoot().getLeft(), equalTo(null));
 		assertThat("null right", treeTest.getRoot().getRight(), equalTo(null));
 		
 	}
 	
 	
+	// inserimento di un oggetto nullo in un albero
+	@Test 
+	public void testInsertNull() {
+		RbTree<String> treeTest = RbTreeGenerator.one();		
+		BasicRbTreeDecorator<String> elementTest = new BasicRbTreeDecorator<String>(null); 	
+		treeTest.insert(elementTest);
+		RbTreeGenerator.writeDotFile(treeTest);
+	}
+	
+
 	// inserimento di un nodo in un albero composto da un solo elemento
 	@Test
 	public void testInsertOne() {		
@@ -59,17 +69,7 @@ public class RbTreeInsertTest {
 		}
 		
 	}
-	
-	
-	// inserimento di un oggetto nullo in un albero
-	@Test 
-	public void testInsertNull() {
-		RbTree<String> treeTest = RbTreeGenerator.one();		
-		BasicRbTreeDecorator<String> elementTest = new BasicRbTreeDecorator<String>(null); 	
-		treeTest.insert(elementTest);
-		RbTreeGenerator.writeDotFile(treeTest);
-	}
-	
+		
 	
 	// inserimento di un nodo in un albero composto da 6 elementi
 	@Test
@@ -83,9 +83,4 @@ public class RbTreeInsertTest {
 
 	}
 
-	
-	
-	
-	
-	
 }

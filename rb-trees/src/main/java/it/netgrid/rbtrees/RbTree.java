@@ -22,7 +22,7 @@ public class RbTree<T extends Comparable<String>> {
 	}
 
 	public void insert(RbTreeElement<T> element) {
-		if (element.getElement() != null) {
+		if (element.getElement() != null) {		//evita eccezione
 			RbTreeElement<T> y = null;
 			RbTreeElement<T> x = this.getRoot();
 			while (x != null) {
@@ -51,9 +51,11 @@ public class RbTree<T extends Comparable<String>> {
 			element.setColor(Color.RED);
 		}
 		else {
-			// do-nothing
+			// DO-NOTHING
 		}
-			
+		
+		
+		// 	public void insertFixup(RbTreeElement<T> element) 	
 	}
 
 
