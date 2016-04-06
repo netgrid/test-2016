@@ -26,7 +26,7 @@ public class RbTreeDeleteTest {
 	
 	
 	@Test
-	public void testOne() {
+	public void testRoot() {
 		RbTree<String> output = RbTreeGenerator.one();
 		assertThat("can't delete root", output.delete(output.getRoot()), equalTo(null));	
 	}
@@ -51,7 +51,7 @@ public class RbTreeDeleteTest {
 	@Test
 	public void testTwoSon() {
 		RbTree<String> output = RbTreeGenerator.six();
-		RbTreeElement<String> expected = output.getRoot().getLeft().getRight();
+		RbTreeElement<String> expected = output.getRoot().getLeft().getLeft();
 		RbTreeElement<String> result = output.delete(output.getRoot().getLeft());
 		assertThat("node deleted", output.delete(output.getRoot().getLeft()), equalTo(expected));
 		
