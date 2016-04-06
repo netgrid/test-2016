@@ -8,29 +8,26 @@ public class RbTree<T extends Comparable<String>> {
 
 	
 	public void leftRotate(RbTreeElement<T> element) {
-		RbTreeElement<T> y;
-		RbTreeElement<T> x;
-		RbTreeElement<T> z;// x parent
-		y=element.getRight(); 
-		x=element.getRight(); 
-		x=y.getLeft(); // sposto il sottoalbero sinistro di y nel sottoalbero di destro di x
+		RbTreeElement<T> y 	= element.getLeft();
+		element.setRight(y.getLeft());
+		if(y.getLeft()!= null){
+			y.getParent().getLeft().setLeft(element);
+		}
+		y.setParent(element.getParent());
 		
-		if(x!= null){
-			x=y.getParent().getLeft();
-			x.getParent();
-			z=x.getParent();
-			z=y.getParent();
-			if(z==null){
-				y=root;
-				
-			}else{
-				
-				
-					
-				}
+		if(element.getParent()==null){
+			y=root;
+			
+		}else{
+			if(element==element.getParent().getLeft()){
+				element.getParent().setLeft(y);
+			}else {
+				element.getParent().setRight(y);
 			}
 		}
-		
+			y.setLeft(element);
+			element.setParent(y);
+		}
 	
 
 	private void rightRotate(RbTreeElement<T> element) {
