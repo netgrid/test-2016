@@ -28,6 +28,7 @@ public class RbTreeInsertTest {
 		RbTree<String> treeTest = RbTreeGenerator.empty();
 		BasicRbTreeDecorator<String> elementTest = new BasicRbTreeDecorator<String>(this.fairy.textProducer().latinSentence()); 
 		treeTest.insert(elementTest);
+		RbTreeGenerator.writeDotFile(treeTest);
 		assertThat("one element (root)", treeTest.getRoot(), notNullValue());
 		assertThat("null left", treeTest.getRoot().getLeft(), equalTo(null));
 		assertThat("null right", treeTest.getRoot().getRight(), equalTo(null));
@@ -41,29 +42,32 @@ public class RbTreeInsertTest {
 		RbTree<String> treeTest = RbTreeGenerator.one();		
 		BasicRbTreeDecorator<String> elementTest = new BasicRbTreeDecorator<String>(this.fairy.textProducer().latinSentence()); 
 		treeTest.insert(elementTest);
+		RbTreeGenerator.writeDotFile(treeTest);
 		
 		// ROOT LEFT
 		if (treeTest.getRoot().toString().compareTo(elementTest.getElement().toString()) == -1) {
 			assertThat("element appended in left", treeTest.getRoot().getLeft(), notNullValue());
 			assertThat("element absent in right", treeTest.getRoot().getRight(), equalTo(null));
+			assertThat("RED", treeTest.getRoot().getLeft().getColor(), equalTo(Color.RED));
 		}
 		
 		// ROOT RIGHT
 		else {
 			assertThat("element appended in right", treeTest.getRoot().getRight(), notNullValue());
 			assertThat("element absent in left", treeTest.getRoot().getLeft(), equalTo(null));
+			assertThat("RED", treeTest.getRoot().getRight().getColor(), equalTo(Color.RED));
 		}
 		
 	}
 	
 	
 	// inserimento di un oggetto nullo in un albero
-	@Test (expected = NullPointerException.class)	// mi aspetto un' eccezione (NullPointerException) perchè non posso eseguire operazioni su oggetti nulli
+	@Test 
 	public void testInsertNull() {
 		RbTree<String> treeTest = RbTreeGenerator.one();		
 		BasicRbTreeDecorator<String> elementTest = new BasicRbTreeDecorator<String>(null); 	
 		treeTest.insert(elementTest);
-		
+		RbTreeGenerator.writeDotFile(treeTest);
 	}
 	
 	
@@ -73,50 +77,10 @@ public class RbTreeInsertTest {
 		RbTree<String> treeTest = RbTreeGenerator.six();		
 		BasicRbTreeDecorator<String> elementTest = new BasicRbTreeDecorator<String>(this.fairy.textProducer().latinSentence()); 
 		treeTest.insert(elementTest);
-		
-		
-		// ROOT LEFT
-		
-		// insert in left-left-left
-		if (treeTest.getRoot().getLeft().getLeft().toString().compareTo(elementTest.getElement().toString()) == -1) {
-			assertThat("not null in left-left-left", treeTest.getRoot().getLeft().getLeft().getLeft(), notNullValue());
-			assertThat("null in left-left-right", treeTest.getRoot().getLeft().getLeft().getRight(), equalTo(null));
-		}
-		// insert in left-left-right
-		else if (treeTest.getRoot().getLeft().getLeft().toString().compareTo(elementTest.getElement().toString()) == 1) {
-			assertThat("not null in left-left-right", treeTest.getRoot().getLeft().getLeft().getRight(), notNullValue());
-			assertThat("null in left-left-left", treeTest.getRoot().getLeft().getLeft().getLeft(), equalTo(null));
-		}		
-		// insert in left-right-left
-		else if (treeTest.getRoot().getLeft().getRight().toString().compareTo(elementTest.getElement().toString()) == -1) {
-			assertThat("not null in left-right-left", treeTest.getRoot().getLeft().getRight().getLeft(), notNullValue());
-			assertThat("null in left-right-right", treeTest.getRoot().getLeft().getRight().getRight(), equalTo(null));
-		}
-		// insert in left-right-right
-		else if (treeTest.getRoot().getLeft().getRight().toString().compareTo(elementTest.getElement().toString()) == 1) {
-			assertThat("not null in left-right-right", treeTest.getRoot().getLeft().getRight().getRight(), notNullValue());
-			assertThat("null in left-right-left", treeTest.getRoot().getLeft().getRight().getLeft(), equalTo(null));
-		}
-		
-		
-		// ROOT RIGHT
-		
-		// insert in right-left-left
-		else if (treeTest.getRoot().getRight().getLeft().toString().compareTo(elementTest.getElement().toString()) == -1) {
-			assertThat("not null in right-left-left", treeTest.getRoot().getRight().getLeft().getLeft(), notNullValue());
-			assertThat("null in right-left-right", treeTest.getRoot().getRight().getLeft().getRight(), equalTo(null));
-		}		
-		// insert in right-left-right
-		else if (treeTest.getRoot().getRight().getLeft().toString().compareTo(elementTest.getElement().toString()) == 1) {
-			assertThat("not null in right-left-right", treeTest.getRoot().getRight().getLeft().getRight(), notNullValue());
-			assertThat("null in right-left-left", treeTest.getRoot().getRight().getLeft().getLeft(), equalTo(null));
-		}	
-		// insert in right-right
-		else {
-			assertThat("not null in right-right", treeTest.getRoot().getRight().getRight(), notNullValue());
-			assertThat("RED in right-right", treeTest.getRoot().getRight().getRight().getColor(), equalTo(Color.RED));
-		}
-	
+		RbTreeGenerator.writeDotFile(treeTest);
+		assertThat("not null in right-right", treeTest.getRoot().getRight().getRight(), notNullValue());
+		assertThat("RED in right-right", treeTest.getRoot().getRight().getRight().getColor(), equalTo(Color.RED));
+
 	}
 
 	

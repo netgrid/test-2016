@@ -22,32 +22,37 @@ public class RbTree<T extends Comparable<String>> {
 	}
 
 	public void insert(RbTreeElement<T> element) {
-		RbTreeElement<T> y = null;
-		RbTreeElement<T> x = this.getRoot();
-		while (x != null) {
-			y = x;
-			if (element.getElement().toString().compareTo(x.getElement().toString()) == -1) {
-				x = x.getLeft();
+		if (element.getElement() != null) {
+			RbTreeElement<T> y = null;
+			RbTreeElement<T> x = this.getRoot();
+			while (x != null) {
+				y = x;
+				if (element.getElement().toString().compareTo(x.getElement().toString()) == -1) {
+					x = x.getLeft();
+				}
+				else {
+					x = x.getRight();
+				}
+			}
+				
+			element.setParent(y);
+			if (y == null) {
+				this.setRoot(element);
+			}
+			else if (element.getElement().toString().compareTo(y.getElement().toString()) == -1) {
+				y.setLeft(element);
 			}
 			else {
-				x = x.getRight();
+				y.setRight(element);
 			}
-		}
-			
-		element.setParent(y);
-		if (y == null) {
-			this.setRoot(element);
-		}
-		else if (element.getElement().toString().compareTo(y.getElement().toString()) == -1) {
-			y.setLeft(element);
+				
+			element.setLeft(null);
+			element.setRight(null);
+			element.setColor(Color.RED);
 		}
 		else {
-			y.setRight(element);
+			// do-nothing
 		}
-			
-		element.setLeft(null);
-		element.setRight(null);
-		element.setColor(Color.RED);
 			
 	}
 
