@@ -28,7 +28,8 @@ public class RbTreeInsertFixUpTest{
 		BasicRbTreeDecorator<String> element = new BasicRbTreeDecorator<String>(fairy.textProducer().latinSentence());
 		//this.classUnderTest.insertFixup(classUnderTest.getRoot());
 		iTest.insertFixup(element);
-		assertThat("null or root", iTest.getRoot(), notNullValue());
+		assertThat("null or root", iTest.getRoot(),equalTo(null));
+		
 	}
 	
 	@Test
@@ -43,7 +44,7 @@ public class RbTreeInsertFixUpTest{
 			assertThat("element absent in right", iTest.getRoot().getRight(), equalTo(null));
 		}
 		else {
-			assertThat("element appended in right", iTest.getRoot().getRight(), notNullValue());
+			assertThat("element appended in right", iTest.getRoot().getRight(), equalTo(null));
 			assertThat("element absent in left", iTest.getRoot().getLeft(), equalTo(null));
 		}
 		
@@ -82,7 +83,7 @@ public class RbTreeInsertFixUpTest{
 		}		
 	
 		else {
-			assertThat("not null in right-right", iTest.getRoot().getRight().getRight(), notNullValue());
+			assertThat("not null in right-right", iTest.getRoot().getRight().getRight(), equalTo(null));
 		}
 	
 	
