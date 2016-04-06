@@ -12,8 +12,7 @@ import io.codearte.jfairy.Fairy;
 import it.netgrid.rbtrees.RbTreeElement.Color;
 
 public class RbTreeInsertFixUpTest{
-	private RbTree<String> classUnderTest;
-	
+	private RbTree<String> classUnderTest;	
 	private Fairy fairy;
 	
 	@Before
@@ -25,32 +24,69 @@ public class RbTreeInsertFixUpTest{
 	
 	@Test
 	public void insertFixUpEmpty() {
-		classUnderTest = RbTreeGenerator.empty();
+		RbTree<String> iTest = RbTreeGenerator.empty();
 		BasicRbTreeDecorator<String> element = new BasicRbTreeDecorator<String>(fairy.textProducer().latinSentence());
-		this.classUnderTest.insertFixup(classUnderTest.getRoot());
-		assertThat("null root", classUnderTest.getRoot(), equalTo(null));
+		//this.classUnderTest.insertFixup(classUnderTest.getRoot());
+		iTest.insertFixup(element);
+		assertThat("null or root", iTest.getRoot(), notNullValue());
 	}
 	
 	@Test
 	public void insertFixUpOne() {
-		classUnderTest = RbTreeGenerator.one();
+		RbTree<String> iTest = RbTreeGenerator.one();
 		BasicRbTreeDecorator<String> element = new BasicRbTreeDecorator<String>(fairy.textProducer().latinSentence());
-		this.classUnderTest.insertFixup(classUnderTest.getRoot());
-		assertThat("root is black", classUnderTest.getRoot().getColor(), equalTo(Color.BLACK));
-		assertThat("null left", classUnderTest.getRoot().getLeft(), equalTo(null));
-		assertThat("null right", classUnderTest.getRoot().getRight(), equalTo(null));
+		//this.classUnderTest.insertFixup(classUnderTest.getRoot());
+		iTest.insertFixup(element);
+		assertThat("root is black", iTest.getRoot().getColor(), equalTo(Color.BLACK));
+		if (iTest.getRoot().toString().compareTo(element.getElement().toString()) == -1) {
+			assertThat("element appended in left", iTest.getRoot().getLeft(), notNullValue());
+			assertThat("element absent in right", iTest.getRoot().getRight(), equalTo(null));
+		}
+		else {
+			assertThat("element appended in right", iTest.getRoot().getRight(), notNullValue());
+			assertThat("element absent in left", iTest.getRoot().getLeft(), equalTo(null));
+		}
 		
 	}
 	
 	@Test
 	public void insertFixUpSix() {
-		classUnderTest = RbTreeGenerator.six();
+		RbTree<String> iTest  = RbTreeGenerator.six();
 		BasicRbTreeDecorator<String> element = new BasicRbTreeDecorator<String>(fairy.textProducer().latinSentence());
-		this.classUnderTest.insertFixup(classUnderTest.getRoot());
-		assertThat("root is black", classUnderTest.getRoot().getColor(), equalTo(Color.BLACK));
-		assertThat("not null left", classUnderTest.getRoot().getLeft(), notNullValue());
-		assertThat("not null right", classUnderTest.getRoot().getRight(), notNullValue());
-		assertThat("not equal", classUnderTest.getRoot().getLeft(), not(equals(classUnderTest.getRoot().getRight())));	
+		//this.classUnderTest.insertFixup(classUnderTest.getRoot());
+		iTest.insertFixup(element);
+		assertThat("root is black", iTest.getRoot().getColor(), equalTo(Color.BLACK));
+		
+		if (iTest.getRoot().getLeft().getLeft().toString().compareTo(element.getElement().toString()) == -1) {
+			assertThat("not null in left-left-left", iTest.getRoot().getLeft().getLeft().getLeft(), notNullValue());
+		}		
+	
+		else if (iTest.getRoot().getLeft().getLeft().toString().compareTo(element.getElement().toString()) == 1) {
+			assertThat("not null in left-left-right", iTest.getRoot().getLeft().getLeft().getRight(), notNullValue());
+		}		
+		
+		else if (iTest.getRoot().getLeft().getRight().toString().compareTo(element.getElement().toString()) == -1) {
+			assertThat("not null in left-right-left", iTest.getRoot().getLeft().getRight().getLeft(), notNullValue());
+		}		
+	
+		else if (iTest.getRoot().getLeft().getRight().toString().compareTo(element.getElement().toString()) == 1) {
+			assertThat("not null in left-right-right", iTest.getRoot().getLeft().getRight().getRight(), notNullValue());
+		}
+		
+		else if (iTest.getRoot().getRight().getLeft().toString().compareTo(element.getElement().toString()) == -1) {
+			assertThat("not null in right-left-left", iTest.getRoot().getRight().getLeft().getLeft(), notNullValue());
+		}		
+		
+		else if (iTest.getRoot().getRight().getLeft().toString().compareTo(element.getElement().toString()) == 1) {
+			assertThat("not null in right-left-right", iTest.getRoot().getRight().getLeft().getRight(), notNullValue());
+		}		
+	
+		else {
+			assertThat("not null in right-right", iTest.getRoot().getRight().getRight(), notNullValue());
+		}
+	
+	
+		assertThat("not equal", iTest.getRoot().getLeft(), not(equals(iTest.getRoot().getRight())));	
 	}
 	
 }
