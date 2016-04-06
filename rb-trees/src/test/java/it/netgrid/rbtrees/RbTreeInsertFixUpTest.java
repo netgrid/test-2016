@@ -28,6 +28,7 @@ public class RbTreeInsertFixUpTest{
 		BasicRbTreeDecorator<String> element = new BasicRbTreeDecorator<String>(fairy.textProducer().latinSentence());
 		//this.classUnderTest.insertFixup(classUnderTest.getRoot());
 		iTest.insertFixup(element);
+		RbTreeGenerator.writeDotFile(iTest);
 		assertThat("null or root", iTest.getRoot(),equalTo(null));
 		
 	}
@@ -38,6 +39,7 @@ public class RbTreeInsertFixUpTest{
 		BasicRbTreeDecorator<String> element = new BasicRbTreeDecorator<String>(fairy.textProducer().latinSentence());
 		//this.classUnderTest.insertFixup(classUnderTest.getRoot());
 		iTest.insertFixup(element);
+		RbTreeGenerator.writeDotFile(iTest);
 		assertThat("root is black", iTest.getRoot().getColor(), equalTo(Color.BLACK));
 		if (iTest.getRoot().toString().compareTo(element.getElement().toString()) == -1) {
 			assertThat("element appended in left", iTest.getRoot().getLeft(), notNullValue());
@@ -56,6 +58,7 @@ public class RbTreeInsertFixUpTest{
 		BasicRbTreeDecorator<String> element = new BasicRbTreeDecorator<String>(fairy.textProducer().latinSentence());
 		//this.classUnderTest.insertFixup(classUnderTest.getRoot());
 		iTest.insertFixup(element);
+		RbTreeGenerator.writeDotFile(iTest);
 		assertThat("root is black", iTest.getRoot().getColor(), equalTo(Color.BLACK));
 		
 		if (iTest.getRoot().getLeft().getLeft().toString().compareTo(element.getElement().toString()) == -1) {

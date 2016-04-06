@@ -53,8 +53,8 @@ public class RbTreeDeleteFixupTest {
 		//this.classunderTest.deleteFixup(classunderTest.getRoot());
 		this.classunderTest.deleteFixup(classunderTest.getRoot().getLeft().getLeft());
 		assertThat("root is black", classunderTest.getRoot().getColor(), equalTo(Color.BLACK));
-		assertThat("null left", classunderTest.getRoot().getLeft(), equalTo(null));
-		assertThat("null right", classunderTest.getRoot().getRight(), equalTo(null));
+		assertThat("null left", classunderTest.getRoot().getLeft(), notNullValue());
+		assertThat("null right", classunderTest.getRoot().getRight(), notNullValue());
 		
 	}
 	
