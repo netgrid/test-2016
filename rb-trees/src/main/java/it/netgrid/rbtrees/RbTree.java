@@ -41,7 +41,7 @@ public class RbTree<T extends Comparable<String>> {
 	public void insert(T element) {
 	}
 
-	//funzione per trovare il successo del nodo da eliminare
+	//Funzione che restituisce il successore del nodo da eliminare
 	public RbTreeElement<T> treeSuccessor(RbTreeElement<T> element){
 		RbTreeElement<T> result;
 		if(element.getRight()!=null){
