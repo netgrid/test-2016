@@ -55,7 +55,11 @@ public class RbTree<T extends Comparable<String>> {
 		return result;
 	}
 	
-	//funzione che elemina un nodo dall'albero
+	/* Funzione che elemina un nodo dall'albero
+	 * -Ritorna null se viene inserito come nodo da eliminare null oppure una radice con {0} figli	  
+	 * -Ritorna il nodo eliminato se il nodo ha {0, 1} figli
+	 * -Ritorna il nodo successore del nodo eliminato se il nodo ha {2} figli
+	 */
 	public RbTreeElement<T> delete(RbTreeElement<T> elementZ) {
 		RbTreeElement<T> result;
 		RbTreeElement<T> elementX;
