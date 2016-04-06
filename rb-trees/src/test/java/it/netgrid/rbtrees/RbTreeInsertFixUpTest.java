@@ -11,8 +11,9 @@ import org.junit.Test;
 import io.codearte.jfairy.Fairy;
 import it.netgrid.rbtrees.RbTreeElement.Color;
 
-public class RbTreeInsertFixUpTest {
+public class RbTreeInsertFixUpTest{
 	private RbTree<String> classUnderTest;
+	private BasicRbTreeDecorator<String> element;
 	private Fairy fairy;
 	
 	@Before
@@ -21,30 +22,35 @@ public class RbTreeInsertFixUpTest {
 		this.fairy = Fairy.create();
 		
 	}
+	
 	@Test
 	public void insertFixUpEmpty() {
-		RbTree<String> output = RbTreeGenerator.empty();
+		classUnderTest = RbTreeGenerator.empty();
+		element = new BasicRbTreeDecorator<String>(fairy.textProducer().latinSentence());
 		this.classUnderTest.insertFixup(classUnderTest.getRoot());
-		assertThat("null root", output.getRoot(), equalTo(null));
+		assertThat("null root", classUnderTest.getRoot(), equalTo(null));
 	}
 	
 	@Test
 	public void insertFixUpOne() {
-		RbTree<String> output = RbTreeGenerator.one();
+		classUnderTest = RbTreeGenerator.one();
+		 element = new BasicRbTreeDecorator<String>(fairy.textProducer().latinSentence());
 		this.classUnderTest.insertFixup(classUnderTest.getRoot());
-		assertThat("root is black", output.getRoot().getColor(), equalTo(Color.BLACK));
-		assertThat("null left", output.getRoot().getLeft(), equalTo(null));
-		assertThat("null right", output.getRoot().getRight(), equalTo(null));
+		assertThat("root is black", classUnderTest.getRoot().getColor(), equalTo(Color.BLACK));
+		assertThat("null left", classUnderTest.getRoot().getLeft(), equalTo(null));
+		assertThat("null right", classUnderTest.getRoot().getRight(), equalTo(null));
 		
 	}
 	
 	@Test
 	public void insertFixUpSix() {
-		RbTree<String> output = RbTreeGenerator.six();
+		classUnderTest = RbTreeGenerator.six();
+		element = new BasicRbTreeDecorator<String>(fairy.textProducer().latinSentence());
 		this.classUnderTest.insertFixup(classUnderTest.getRoot());
-		assertThat("root is black", output.getRoot().getColor(), equalTo(Color.BLACK));
-		assertThat("not null left", output.getRoot().getLeft(), notNullValue());
-		assertThat("not null right", output.getRoot().getRight(), notNullValue());
-		assertThat("not equal", output.getRoot().getLeft(), not(equals(output.getRoot().getRight())));	
+		assertThat("root is black", classUnderTest.getRoot().getColor(), equalTo(Color.BLACK));
+		assertThat("not null left", classUnderTest.getRoot().getLeft(), notNullValue());
+		assertThat("not null right", classUnderTest.getRoot().getRight(), notNullValue());
+		assertThat("not equal", classUnderTest.getRoot().getLeft(), not(equals(classUnderTest.getRoot().getRight())));	
 	}
+	
 }

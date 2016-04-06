@@ -8,6 +8,7 @@ public class RbTree<T extends Comparable<String>> {
 
 	private RbTreeElement<T> root;
 
+
 	public void leftRotate(RbTreeElement<T> element) {
 	}
 
