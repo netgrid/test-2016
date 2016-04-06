@@ -38,17 +38,10 @@ public class RbTreeInsertFixUpTest{
 		RbTree<String> iTest = RbTreeGenerator.one();
 		BasicRbTreeDecorator<String> element = new BasicRbTreeDecorator<String>(fairy.textProducer().latinSentence());
 		//this.classUnderTest.insertFixup(classUnderTest.getRoot());
+		iTest.getRoot().setColor(Color.RED);
 		iTest.insertFixup(element);
 		RbTreeGenerator.writeDotFile(iTest);
 		assertThat("root is black", iTest.getRoot().getColor(), equalTo(Color.BLACK));
-		if (iTest.getRoot().toString().compareTo(element.getElement().toString()) == -1) {
-			assertThat("element appended in left", iTest.getRoot().getLeft(), notNullValue());
-			assertThat("element absent in right", iTest.getRoot().getRight(), equalTo(null));
-		}
-		else {
-			assertThat("element appended in right", iTest.getRoot().getRight(), equalTo(null));
-			assertThat("element absent in left", iTest.getRoot().getLeft(), equalTo(null));
-		}
 		
 	}
 	
