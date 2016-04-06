@@ -13,7 +13,7 @@ import it.netgrid.rbtrees.RbTreeElement.Color;
 
 public class RbTreeInsertFixUpTest{
 	private RbTree<String> classUnderTest;
-	private BasicRbTreeDecorator<String> element;
+	
 	private Fairy fairy;
 	
 	@Before
@@ -26,7 +26,7 @@ public class RbTreeInsertFixUpTest{
 	@Test
 	public void insertFixUpEmpty() {
 		classUnderTest = RbTreeGenerator.empty();
-		element = new BasicRbTreeDecorator<String>(fairy.textProducer().latinSentence());
+		BasicRbTreeDecorator<String> element = new BasicRbTreeDecorator<String>(fairy.textProducer().latinSentence());
 		this.classUnderTest.insertFixup(classUnderTest.getRoot());
 		assertThat("null root", classUnderTest.getRoot(), equalTo(null));
 	}
@@ -34,7 +34,7 @@ public class RbTreeInsertFixUpTest{
 	@Test
 	public void insertFixUpOne() {
 		classUnderTest = RbTreeGenerator.one();
-		 element = new BasicRbTreeDecorator<String>(fairy.textProducer().latinSentence());
+		BasicRbTreeDecorator<String> element = new BasicRbTreeDecorator<String>(fairy.textProducer().latinSentence());
 		this.classUnderTest.insertFixup(classUnderTest.getRoot());
 		assertThat("root is black", classUnderTest.getRoot().getColor(), equalTo(Color.BLACK));
 		assertThat("null left", classUnderTest.getRoot().getLeft(), equalTo(null));
@@ -45,7 +45,7 @@ public class RbTreeInsertFixUpTest{
 	@Test
 	public void insertFixUpSix() {
 		classUnderTest = RbTreeGenerator.six();
-		element = new BasicRbTreeDecorator<String>(fairy.textProducer().latinSentence());
+		BasicRbTreeDecorator<String> element = new BasicRbTreeDecorator<String>(fairy.textProducer().latinSentence());
 		this.classUnderTest.insertFixup(classUnderTest.getRoot());
 		assertThat("root is black", classUnderTest.getRoot().getColor(), equalTo(Color.BLACK));
 		assertThat("not null left", classUnderTest.getRoot().getLeft(), notNullValue());
