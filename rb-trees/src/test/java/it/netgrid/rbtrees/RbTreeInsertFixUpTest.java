@@ -48,12 +48,28 @@ public class RbTreeInsertFixUpTest{
 	@Test
 	public void insertFixUpSix() {
 		RbTree<String> iTest  = RbTreeGenerator.six();
-		BasicRbTreeDecorator<String> element = new BasicRbTreeDecorator<String>(fairy.textProducer().latinSentence());
+		RbTreeElement<String> element = iTest.getRoot().getRight();
+		String base = iTest.getRoot().getElement();
+		
+		
+		BasicRbTreeDecorator<String> child = new BasicRbTreeDecorator<String>(base+base);
+		child.setColor(Color.RED);
+		child.setParent(element);
+		element.setRight(child);
+		
+		element = child;
+		child = new BasicRbTreeDecorator<String>(base+base+base);
+		child.setColor(Color.RED);
+		child.setParent(element);
+		element.setRight(child);
+		
 		//this.classUnderTest.insertFixup(classUnderTest.getRoot());
-		iTest.insertFixup(element);
+		iTest.insertFixup(child);
 		RbTreeGenerator.writeDotFile(iTest);
 		assertThat("root is black", iTest.getRoot().getColor(), equalTo(Color.BLACK));
 		
+		//asserzioni che rispettino rb tree
+		//radice nera, nodo rosso entrambi figli neri (null == BLACK), radice equi-numero di nodi neri
 		if (iTest.getRoot().getLeft().getLeft().toString().compareTo(element.getElement().toString()) == -1) {
 			assertThat("not null in left-left-left", iTest.getRoot().getLeft().getLeft().getLeft(), notNullValue());
 		}		
