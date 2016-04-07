@@ -1,11 +1,12 @@
 package it.netgrid.rbtrees;
 
-import java.util.List;
-
 public class RbTree<T extends Comparable<String>> {
 
 	private RbTreeElement<T> root;
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/feature/RightRotate
 	
 	public void leftRotate(RbTreeElement<T> element) {
 		RbTreeElement<T> y;
@@ -52,14 +53,17 @@ public class RbTree<T extends Comparable<String>> {
 		y.setRight(element);										//Pone x a destra di y 
 		element.setParent(y);
 	}
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> origin/feature/RightRotate
 
-	public void insertFixup(RbTreeElement<T> element) {
+	private void insertFixup(RbTreeElement<T> element) {
 		
 	}
 
-	public void deleteFixup(RbTreeElement<T> element) {
+	private void deleteFixup(RbTreeElement<T> element) {
 	}
 
 	public void insert(T element) {
@@ -76,11 +80,7 @@ public class RbTree<T extends Comparable<String>> {
 		return root;
 	}
 
-	public void setRoot(RbTreeElement<T> root) {
+	private void setRoot(RbTreeElement<T> root) {
 		this.root = root;
-	}
-	
-	public List<T> getList(String element) {
-		return null;
 	}
 }

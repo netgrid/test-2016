@@ -54,13 +54,13 @@ public class RbTreeGenerator {
 		
 		if(element.getLeft() != null) {
 			int childId = java.lang.System.identityHashCode(element.getLeft().getElement());
-			content.append(String.format("%d -> %d;", id, childId));
+			content.append(String.format("%d -> %d[label=\" L\"];", id, childId));
 			writeSubTree(element.getLeft(), content, declarations);
 		}	
 		
 		if(element.getRight() != null) {
 			int childId = java.lang.System.identityHashCode(element.getRight().getElement());
-			content.append(String.format("%d -> %d;", id, childId));
+			content.append(String.format("%d -> %d[label=\" R\"];", id, childId));
 			writeSubTree(element.getRight(), content, declarations);
 		}
 	}
