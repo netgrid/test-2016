@@ -3,10 +3,7 @@ package it.netgrid.rbtrees;
 public class RbTree<T extends Comparable<String>> {
 
 	private RbTreeElement<T> root;
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/feature/RightRotate
 	
 	public void leftRotate(RbTreeElement<T> element) {
 		RbTreeElement<T> y;
@@ -53,11 +50,7 @@ public class RbTree<T extends Comparable<String>> {
 		y.setRight(element);										//Pone x a destra di y 
 		element.setParent(y);
 	}
-<<<<<<< HEAD
 
-
-=======
->>>>>>> origin/feature/RightRotate
 
 	private void insertFixup(RbTreeElement<T> element) {
 		
@@ -80,7 +73,7 @@ public class RbTree<T extends Comparable<String>> {
 		return root;
 	}
 
-	private void setRoot(RbTreeElement<T> root) {
+	void setRoot(RbTreeElement<T> root) {
 		this.root = root;
 	}
 }
