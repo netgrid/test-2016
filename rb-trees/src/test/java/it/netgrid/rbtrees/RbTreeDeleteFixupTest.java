@@ -47,7 +47,6 @@ public class RbTreeDeleteFixupTest {
 		assertThat("not equal", classunderTest.getRoot().getLeft(), not(equals(classunderTest.getRoot().getRight())));	
 		RbTreeGenerator.writeDotFile(classunderTest);
 	}
-	
 	@Test
 	public void testSpec() {
 		classunderTest = RbTreeGenerator.six();
@@ -59,6 +58,40 @@ public class RbTreeDeleteFixupTest {
 		assertThat("null right", classunderTest.getRoot().getRight(), equalTo(null));
 		RbTreeGenerator.writeDotFile(classunderTest);
 	}
-	
-}
+	public int Visita(RbTree<String> x){
+		if(x==null){
+			return 1;
+		}
+		
+		
+		
+		return x;
+		
+	}
+	public void Test(RbTree<String> Tree){
+	if(Tree.getRoot()==null){
+		
+		if(Tree.getRoot().isRed()){
+					Tree.getRoot().setColor(Color.BLACK);
+				}
+			if(Tree.getRoot().getLeft().getLeft()!=null&&
+			   Tree.getRoot().getLeft().getRight()!=null&&
+			   Tree.getRoot().getRight().getLeft()!=null){
+						
+					if(Tree.getRoot().getLeft().isRed()){
+						Tree.getRoot().getLeft().getLeft().setColor(Color.BLACK);
+						Tree.getRoot().getLeft().getRight().setColor(Color.BLACK);
+					}
+					if(Tree.getRoot().getRight().isRed()){
+						Tree.getRoot().getRight().getLeft().setColor(Color.BLACK);
+					}
+		
+		}			
+			
+		}
+	}
+		
+	}
+  
+
 
