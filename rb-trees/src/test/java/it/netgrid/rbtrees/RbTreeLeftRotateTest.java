@@ -3,15 +3,23 @@ package it.netgrid.rbtrees;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import io.codearte.jfairy.Fairy;
 import it.netgrid.rbtrees.RbTreeElement.Color;
 
 public class RbTreeLeftRotateTest {
-	private RbTreeGenerator classUnderTest;
+	private RbTree<BasicRbTreeDecorator<Object>> classUnderTest;
 	private Fairy fairy = Fairy.create();
 	BasicRbTreeDecorator<String> element = new BasicRbTreeDecorator<String>(fairy.textProducer().latinSentence());
+	
+	@Before
+	public void init() {
+		this.classUnderTest = new RbTree<BasicRbTreeDecorator<Object>>();
+		this.fairy = Fairy.create();
+		
+	}
 	
 	@Test
 	public void testOne() {
