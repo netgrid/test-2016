@@ -1,7 +1,9 @@
 package it.netgrid.rbtrees;
 
+
 import java.awt.Color;
 import java.util.List;
+
 
 public class RbTree<T extends Comparable<String>> {
 
@@ -29,11 +31,9 @@ public class RbTree<T extends Comparable<String>> {
 
 
 	public void leftRotate(RbTreeElement<T> element) {
-		RbTreeElement<T> y = element.getRight();					//Imposto y
-		if(y.getLeft() != null){
-			element.setRight(y.getLeft());							//Sposto il sottoalbero destro di x nel sottoalbero 
-		}
-		if(y.getLeft() != null){									//sinistro sinistro di x
+		RbTreeElement<T> y = element.getRight();						//Imposto y
+		element.setRight(y.getLeft());								//Sposto il sottoalbero sinistro di x nel sottoalbero 
+		if(y.getLeft() != null){									//sinistro destro di x
 			y.getLeft().setParent(element);
 		}
 		y.setParent(element.getParent());							// collego il padre di x con quello di y
@@ -48,7 +48,7 @@ public class RbTree<T extends Comparable<String>> {
 				element.getParent().setRight(y);
 			}
 		}
-		y.setLeft(element);										//Pone x a destra di y 
+		y.setLeft(element);										//Pone x a sinistra di y 
 		element.setParent(y);
 		}
 
@@ -79,11 +79,15 @@ public class RbTree<T extends Comparable<String>> {
 	}
 
 
-	public void insertFixup(RbTreeElement<T> element) {
+
+	
+
+	private void insertFixup(RbTreeElement<T> element) {
+
 		
 	}
 
-	public void deleteFixup(RbTreeElement<T> element) {
+	private void deleteFixup(RbTreeElement<T> element) {
 	}
 
 	public void insert(T element) {
@@ -161,11 +165,7 @@ public class RbTree<T extends Comparable<String>> {
 		return root;
 	}
 
-	public void setRoot(RbTreeElement<T> root) {
+	void setRoot(RbTreeElement<T> root) {
 		this.root = root;
-	}
-	
-	public List<T> getList(String element) {
-		return null;
 	}
 }

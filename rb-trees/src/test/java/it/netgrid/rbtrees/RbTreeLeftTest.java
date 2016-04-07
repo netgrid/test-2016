@@ -22,11 +22,19 @@ public class RbTreeLeftTest {
 	
 	
 	@Test
-	public void testLeftRotate() {
+	public void testLeftRotateOne() {
 			classUnderTest =RbTreeGenerator.one();//crea un albero con un nodo
-			this.classUnderTest.leftRotate(classUnderTest.getRoot());
 			assertThat("root is black", classUnderTest.getRoot().getColor(), equalTo(Color.BLACK));
 			assertThat("null left", classUnderTest.getRoot().getLeft(), equalTo(null));
 			assertThat("null right", classUnderTest.getRoot().getRight(), equalTo(null));
+	}
+	
+	@Test
+	public void TestLeftRotateSix(){
+		classUnderTest =RbTreeGenerator.six();
+		assertThat("root is black", classUnderTest.getRoot().getColor(), equalTo(Color.BLACK));
+		assertThat("not null left", classUnderTest.getRoot().getLeft(), notNullValue());
+		assertThat("not null right", classUnderTest.getRoot().getRight(), notNullValue());
+		assertThat("not equal", classUnderTest.getRoot().getLeft(), not(equals(classUnderTest.getRoot().getRight())));
 	}
 }
