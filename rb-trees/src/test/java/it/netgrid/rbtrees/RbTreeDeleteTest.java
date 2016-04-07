@@ -1,21 +1,11 @@
 package it.netgrid.rbtrees;
 
-
-import io.codearte.jfairy.Fairy;
 import static org.hamcrest.MatcherAssert.assertThat; 
 import static org.hamcrest.Matchers.*;
 
-
-
-import java.awt.Color;
-
-import org.junit.Before;
 import org.junit.Test;
 
 public class RbTreeDeleteTest {
-
-	private RbTree<String> classUnderTest;
-	private Fairy fairy;
 	
 	
 	@Test
