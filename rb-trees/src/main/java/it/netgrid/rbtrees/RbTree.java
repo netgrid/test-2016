@@ -8,7 +8,8 @@ public class RbTree<T extends Comparable<String>> {
 
 	
 	public void leftRotate(RbTreeElement<T> element) {
-		RbTreeElement<T> y 	= element.getLeft();
+		RbTreeElement<T> y;
+		y=element.getRight();
 		element.setRight(y.getLeft());
 		if(y.getLeft()!= null){
 			y.getParent().getLeft().setLeft(element);
