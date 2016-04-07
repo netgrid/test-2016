@@ -1,7 +1,8 @@
 package it.netgrid.rbtrees;
 
-import java.awt.Color;
 import java.util.List;
+
+import it.netgrid.rbtrees.RbTreeElement.Color;
 
 public class RbTree<T extends Comparable<String>> {
 
@@ -126,7 +127,6 @@ public class RbTree<T extends Comparable<String>> {
 		}
 		
 		//18-----------------------------------------------------------------------------------------------|
-		//RbTreeGenerator.writeDotFile(this);
 		return result;
 	}
 
