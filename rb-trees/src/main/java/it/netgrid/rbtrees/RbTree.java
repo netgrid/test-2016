@@ -6,6 +6,7 @@ import java.util.List;
 public class RbTree<T extends Comparable<String>> {
 
 	private RbTreeElement<T> root;
+
 	
 	//procedura che restituisce  un puntatore all'elemeneto minimo del sottoalbero con radice in un nodo x
 	private RbTreeElement<T> treeMinimum(RbTreeElement<T> element){
@@ -50,7 +51,9 @@ public class RbTree<T extends Comparable<String>> {
 		y.setLeft(element);										//Pone x a destra di y 
 		element.setParent(y);
 		}
+
 		
+
 	
 
 	public void rightRotate(RbTreeElement<T> element) {
@@ -74,6 +77,7 @@ public class RbTree<T extends Comparable<String>> {
 		y.setRight(element);										//Pone x a destra di y 
 		element.setParent(y);
 	}
+
 
 	public void insertFixup(RbTreeElement<T> element) {
 		

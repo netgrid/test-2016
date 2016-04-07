@@ -29,6 +29,21 @@ public class RbTreeLeftRotateTest {
 		
 	}
 	
+	@Test
+	public void testThree() {
+		RbTree<String> output = RbTreeGenerator.six();
+		output.rightRotate(output.getRoot().getLeft());
+		
+		
+	}
+	
+	@Test
+	public void testFour() {
+		RbTree<String> output = RbTreeGenerator.six();
+		output.leftRotate(output.getRoot().getLeft());
+		
+		
+	}
 	
 	private static String multi(String base, int multi) {
 		String retval = "";
