@@ -57,15 +57,17 @@ public class RbTreeInsertTest {
 		// ROOT LEFT
 		if (treeTest.getRoot().toString().compareTo(elementTest.getElement().toString()) == -1) {
 			assertThat("element appended in left", treeTest.getRoot().getLeft(), notNullValue());
+			assertThat("element appended is RED", treeTest.getRoot().getLeft().getColor(), equalTo(Color.RED));
 			assertThat("element absent in right", treeTest.getRoot().getRight(), equalTo(null));
-			assertThat("RED", treeTest.getRoot().getLeft().getColor(), equalTo(Color.RED));
+			
 		}
 		
 		// ROOT RIGHT
 		else {
 			assertThat("element appended in right", treeTest.getRoot().getRight(), notNullValue());
+			assertThat("element appended is RED", treeTest.getRoot().getRight().getColor(), equalTo(Color.RED));
 			assertThat("element absent in left", treeTest.getRoot().getLeft(), equalTo(null));
-			assertThat("RED", treeTest.getRoot().getRight().getColor(), equalTo(Color.RED));
+			
 		}
 		
 	}
