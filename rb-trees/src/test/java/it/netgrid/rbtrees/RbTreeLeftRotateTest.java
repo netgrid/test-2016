@@ -7,16 +7,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 import io.codearte.jfairy.Fairy;
-import it.netgrid.rbtrees.RbTreeElement.Color;
 
 public class RbTreeLeftRotateTest {
-	private RbTree<BasicRbTreeDecorator<Object>> classUnderTest;
+	private RbTree<String> classUnderTest;
 	private Fairy fairy = Fairy.create();
 	BasicRbTreeDecorator<String> element = new BasicRbTreeDecorator<String>(fairy.textProducer().latinSentence());
 	
 	@Before
 	public void init() {
-		this.classUnderTest = new RbTree<BasicRbTreeDecorator<Object>>();
 		this.fairy = Fairy.create();
 		
 	}
@@ -38,12 +36,16 @@ public class RbTreeLeftRotateTest {
 	}
 	
 	@Test
-	public void testThree() {
-		RbTree<String> output = RbTreeGenerator.six();
-		output.rightRotate(output.getRoot().getLeft());
-		
-		
-	}
+	public void testLeftRotateSix(){
+		classUnderTest =RbTreeGenerator.six();
+		RbTreeElement x = classUnderTest.getRoot().getLeft();
+		RbTreeElement y = classUnderTest.getRoot().getLeft().getRight();
+		RbTreeElement z = classUnderTest.getRoot().getLeft().getLeft();
+		classUnderTest.leftRotate(classUnderTest.getRoot().getLeft());
+		assertThat("rotated x", classUnderTest.getRoot().getLeft().getLeft(), equalTo(x));
+		assertThat("rotated y", classUnderTest.getRoot().getLeft(), equalTo(y));
+		assertThat("rotated z", classUnderTest.getRoot().getLeft().getLeft().getLeft(), equalTo(z)); 
+		}
 	
 	@Test
 	public void testFour() {
