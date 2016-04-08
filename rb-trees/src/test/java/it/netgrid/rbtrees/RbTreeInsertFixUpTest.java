@@ -82,23 +82,40 @@ public class RbTreeInsertFixUpTest {
 		if (iTest.getRoot() != null) {
 			assertThat("root is black", iTest.getRoot().getColor(), equalTo(Color.BLACK));
 		}
-
+	}
 		// Ricorda che Nodo Null == Nero (nessuna istruzione)
 
 		// Nodo Rosso e Figli Neri
-		if (element.isRed()) {
-			if (element.getLeft().isBlack() && element.getRight().isBlack()) {
+		public int redNode(RbTreeElement<String> element){
+			RbTree<String> iTest = RbTreeGenerator.six();
+			element = iTest.getRoot().getRight();
+			iTest.insertFixup(element);
+			if(iTest.getRoot().isRed()){
+				iTest.getRoot().getLeft().setColor(Color.BLACK);
+				iTest.getRoot().getRight().setColor(Color.BLACK);
+				assertThat("node is red", iTest.getRoot().getColor(), equalTo(Color.RED));
+				assertThat("child left is black", iTest.getRoot().getLeft().getColor(), equalTo(Color.BLACK));
+				assertThat("child right is black", iTest.getRoot().getRight().getColor(), equalTo(Color.BLACK));
+			}
+			element = iTest.getRoot().getLeft();
+			if(element.isRed()){
+				element.getLeft().setColor(Color.BLACK);
+				element.getRight().setColor(Color.BLACK);
 				assertThat("node is red", element.getColor(), equalTo(Color.RED));
 				assertThat("child left is black", element.getLeft().getColor(), equalTo(Color.BLACK));
 				assertThat("child right is black", element.getRight().getColor(), equalTo(Color.BLACK));
-			} else {
-				assertThat("node is red", element.getColor(), equalTo(Color.RED));
-				assertThat("child is red or null", element.getLeft().getColor(), notNullValue());
-				assertThat("child is red or null", element.getRight().getColor(), notNullValue());
-				return;
 			}
+			element = iTest.getRoot().getRight();
+			if(element.isRed()){
+				element.getLeft().setColor(Color.BLACK);
+				assertThat("node is red", element.getColor(), equalTo(Color.RED));
+				assertThat("child left is black", element.getLeft().getColor(), equalTo(Color.BLACK));
+			}
+			return counter;
 		}
-	}
+	
+		
+	
 
 	// Ogni Radice ha lo stesso numero di Nodi Neri
 
