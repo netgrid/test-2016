@@ -77,7 +77,33 @@ public class RbTree<T extends Comparable<String>> {
 	private void deleteFixup(RbTreeElement<T> element) {
 	}
 
-	public void insert(T element) {
+	public void insert(RbTreeElement<T> element) {
+		if (element.getElement() == null) {
+			return;
+		}
+		RbTreeElement<T> y = null;
+		RbTreeElement<T> x = this.getRoot();
+		while (x != null) {
+			y = x;
+			if (element.getElement().toString().compareTo(x.getElement().toString()) == -1) {
+				x = x.getLeft();
+			} else {
+				x = x.getRight();
+			}
+		}
+
+		element.setParent(y);
+		if (y == null) {
+			this.setRoot(element);
+		} else if (element.getElement().toString().compareTo(y.getElement().toString()) == -1) {
+			y.setLeft(element);
+		} else {
+			y.setRight(element);
+		}
+
+		element.setLeft(null);
+		element.setRight(null);
+		element.setColor(Color.RED);
 	}
 
 	public RbTreeElement<T> treeSuccessor(RbTreeElement<T> element) {
