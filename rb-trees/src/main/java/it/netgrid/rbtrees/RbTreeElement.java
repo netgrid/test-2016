@@ -27,4 +27,7 @@ public interface RbTreeElement<T> extends Comparable<String> {
 	public void setColor(Color color);
 
 	public T getElement();
+
+	public void setElement(T element);
+	
 }
