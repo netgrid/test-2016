@@ -3,8 +3,6 @@ package it.netgrid.rbtrees;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
-import static org.hamcrest.Matchers.notNullValue;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -72,48 +70,90 @@ public class RbTreeInsertFixUpTest {
 		assertThat("root is black", iTest.getRoot().getColor(), equalTo(Color.BLACK));
 	}
 
+	// Ricorda che Nodo Null == Nero (nessuna istruzione)
 	@Test
-	public void assertThatFixUp() {
+	public void blackRoot() { //Radice Nera
 		RbTree<String> iTest = RbTreeGenerator.six();
 		RbTreeElement<String> element = iTest.getRoot().getRight();
 		iTest.insertFixup(element);
 
-		// Radice Nera
+		
 		if (iTest.getRoot() != null) {
 			assertThat("root is black", iTest.getRoot().getColor(), equalTo(Color.BLACK));
 		}
 	}
-		// Ricorda che Nodo Null == Nero (nessuna istruzione)
 
 		// Nodo Rosso e Figli Neri
-		public int redNode(RbTreeElement<String> element){
+		public int nullNode(RbTreeElement<String> element){
 			RbTree<String> iTest = RbTreeGenerator.six();
-			element = iTest.getRoot().getRight();
+			element = iTest.getRoot();
 			iTest.insertFixup(element);
-			if(iTest.getRoot().isRed()){
+			if (element == null) {
+				counter = 1;
+				return counter;
+			} else if(element.isRed()){
 				iTest.getRoot().getLeft().setColor(Color.BLACK);
 				iTest.getRoot().getRight().setColor(Color.BLACK);
 				assertThat("node is red", iTest.getRoot().getColor(), equalTo(Color.RED));
 				assertThat("child left is black", iTest.getRoot().getLeft().getColor(), equalTo(Color.BLACK));
 				assertThat("child right is black", iTest.getRoot().getRight().getColor(), equalTo(Color.BLACK));
+				counter = 0;
+				checkLeftNode(element);
 			}
-			element = iTest.getRoot().getLeft();
-			if(element.isRed()){
+			return counter;		
+			
+		}
+			public int checkLeftNode(RbTreeElement<String> element){
+				RbTree<String> iTest = RbTreeGenerator.six();
+				element = iTest.getRoot().getLeft();
+				iTest.insertFixup(element);
+				if (element == null) {
+					counterL = 1;
+					return counterL;
+				}
+				else if(element.isRed()){
 				element.getLeft().setColor(Color.BLACK);
 				element.getRight().setColor(Color.BLACK);
 				assertThat("node is red", element.getColor(), equalTo(Color.RED));
 				assertThat("child left is black", element.getLeft().getColor(), equalTo(Color.BLACK));
 				assertThat("child right is black", element.getRight().getColor(), equalTo(Color.BLACK));
+				counterL = 0;
+				checkRightNode(element);
 			}
-			element = iTest.getRoot().getRight();
-			if(element.isRed()){
-				element.getLeft().setColor(Color.BLACK);
-				assertThat("node is red", element.getColor(), equalTo(Color.RED));
-				assertThat("child left is black", element.getLeft().getColor(), equalTo(Color.BLACK));
+			return counterL;}
+			
+			public int checkRightNode(RbTreeElement<String> element){
+				RbTree<String> iTest = RbTreeGenerator.six();
+				element = iTest.getRoot().getRight();
+				iTest.insertFixup(element);
+			
+				if (element == null) {
+					counterR = 1;
+					return counterR;
+				}
+				else{
+					if(element.isRed()){
+						element.getLeft().setColor(Color.BLACK);
+						assertThat("node is red", element.getColor(), equalTo(Color.RED));
+						assertThat("child left is black", element.getLeft().getColor(), equalTo(Color.BLACK));
+						counterR = 0;
+						checkAll(element);
+						
+				}
+					return counterR;
 			}
-			return counter;
+			
 		}
+			public int checkAll(RbTreeElement<String> element) {
+				int fCounter;
+
+				fCounter = counter + counterL + counterR;
+				
+				return nullNode(element) + checkLeftNode(element) + checkRightNode(element) + fCounter;
+
+			}
 	
+			
 		
 	
 
@@ -122,10 +162,11 @@ public class RbTreeInsertFixUpTest {
 	int counter;
 	int counterL;
 	int counterR;
-
+	RbTree<String> iTest = RbTreeGenerator.six();
+	
 	public int visita(RbTreeElement<String> element) {
-		RbTree<String> iTest = RbTreeGenerator.six();
-		element = iTest.getRoot().getRight();
+		
+		element = iTest.getRoot();
 		iTest.insertFixup(element);
 
 		if (element == null) {
@@ -140,13 +181,11 @@ public class RbTreeInsertFixUpTest {
 	}
 
 	public int visitaLeft(RbTreeElement<String> element) {
-
+		element = iTest.getRoot().getLeft();
 		if (element == null) {
 			counterL = 1;
 			return counterL;
 		} else {
-
-			element.getLeft();
 			counterL = 0;
 			visitaRight(element);
 			return counterL;
@@ -154,13 +193,13 @@ public class RbTreeInsertFixUpTest {
 	}
 
 	public int visitaRight(RbTreeElement<String> element) {
-		int counterR;
+		element = iTest.getRoot().getRight();
 		if (element == null) {
 			counterR = 1;
 			return counterR;
 		} else {
 
-			element.getRight();
+			
 			counterR = 0;
 			visitaCheck(element);
 			return counterR;
