@@ -58,40 +58,39 @@ public class RbTreeDeleteFixupTest {
 		assertThat("null right", classunderTest.getRoot().getRight(), equalTo(null));
 		RbTreeGenerator.writeDotFile(classunderTest);
 	}
-	public int Visita(RbTree<String> x){
-		if(x==null){
-			return 1;
+
+	public int Visita(RbTreeElement<String> element) {
+		int count, countLeft, countRight;
+
+		if (element == null) {
+			count = 1;
+			return count;
+
+		} else {
+			count = element.isBlack() ? 1 : 0;
+			countRight = Visita(element.getRight());
+			countLeft = Visita(element.getLeft());
+			return count;
 		}
-		
-		
-		
-		return x;
-		
+
 	}
-	public void Test(RbTree<String> Tree){
-	if(Tree.getRoot()==null){
-		
-		if(Tree.getRoot().isRed()){
-					Tree.getRoot().setColor(Color.BLACK);
-				}
-			if(Tree.getRoot().getLeft().getLeft()!=null&&
-			   Tree.getRoot().getLeft().getRight()!=null&&
-			   Tree.getRoot().getRight().getLeft()!=null){
-						
-					if(Tree.getRoot().getLeft().isRed()){
-						Tree.getRoot().getLeft().getLeft().setColor(Color.BLACK);
-						Tree.getRoot().getLeft().getRight().setColor(Color.BLACK);
-					}
-					if(Tree.getRoot().getRight().isRed()){
-						Tree.getRoot().getRight().getLeft().setColor(Color.BLACK);
-					}
-		
-		}			
-			
+
+	public void Test(RbTreeElement<String> element) {
+
+		if (element == null) {
+			return;
 		}
+		if (element.isRed()) {
+			boolean leftCheck = element.getLeft() == null ? true : element.getLeft().isBlack();
+			boolean RightCheck = element.getRight() == null ? true : element.getLeft().isBlack();
+
+		}
+
 	}
+
+}
 		
-	}
+	
   
 
 
