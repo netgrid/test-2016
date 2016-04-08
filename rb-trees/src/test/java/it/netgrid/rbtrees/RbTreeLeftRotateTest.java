@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import io.codearte.jfairy.Fairy;
-import it.netgrid.rbtrees.RbTreeElement.Color;
 
 public class RbTreeLeftRotateTest {
 	private RbTree<String> classUnderTest;
