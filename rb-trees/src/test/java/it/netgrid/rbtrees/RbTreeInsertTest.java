@@ -11,12 +11,10 @@ import it.netgrid.rbtrees.RbTreeElement.Color;
 
 public class RbTreeInsertTest {
 
-	private RbTree<BasicRbTreeDecorator<Object>> classUnderTest;
 	private Fairy fairy;
 	
 	@Before
 	public void init() {
-		this.classUnderTest = new RbTree<BasicRbTreeDecorator<Object>>();
 		this.fairy = Fairy.create();
 		
 	}
@@ -25,13 +23,12 @@ public class RbTreeInsertTest {
 	// inserimento di un nodo in un albero vuoto
 	@Test
 	public void testInsertEmpty() {	
-		RbTree<String> treeTest = RbTreeGenerator.empty();
+		RbTree<String> classUnderTest = RbTreeGenerator.empty();
 		BasicRbTreeDecorator<String> elementTest = new BasicRbTreeDecorator<String>(this.fairy.textProducer().latinSentence()); 
-		treeTest.insert(elementTest);
-		RbTreeGenerator.writeDotFile(treeTest);
-		assertThat("one element", treeTest.getRoot(), notNullValue());
-		assertThat("null left", treeTest.getRoot().getLeft(), equalTo(null));
-		assertThat("null right", treeTest.getRoot().getRight(), equalTo(null));
+		classUnderTest.insert(elementTest);
+		assertThat("one element", classUnderTest.getRoot(), notNullValue());
+		assertThat("null left", classUnderTest.getRoot().getLeft(), equalTo(null));
+		assertThat("null right", classUnderTest.getRoot().getRight(), equalTo(null));
 		
 	}
 	
@@ -39,34 +36,32 @@ public class RbTreeInsertTest {
 	// inserimento di un oggetto nullo in un albero
 	@Test 
 	public void testInsertNull() {
-		RbTree<String> treeTest = RbTreeGenerator.one();		
+		RbTree<String> classUnderTest = RbTreeGenerator.one();		
 		BasicRbTreeDecorator<String> elementTest = new BasicRbTreeDecorator<String>(null); 	
-		treeTest.insert(elementTest);
-		RbTreeGenerator.writeDotFile(treeTest);
+		classUnderTest.insert(elementTest);
 	}
 	
 
 	// inserimento di un nodo in un albero composto da un solo elemento
 	@Test
 	public void testInsertOne() {		
-		RbTree<String> treeTest = RbTreeGenerator.one();		
+		RbTree<String> classUnderTest = RbTreeGenerator.one();		
 		BasicRbTreeDecorator<String> elementTest = new BasicRbTreeDecorator<String>(this.fairy.textProducer().latinSentence()); 
-		treeTest.insert(elementTest);
-		RbTreeGenerator.writeDotFile(treeTest);
+		classUnderTest.insert(elementTest);
 		
 		// ROOT LEFT
-		if (treeTest.getRoot().toString().compareTo(elementTest.getElement().toString()) == -1) {
-			assertThat("element appended in left", treeTest.getRoot().getLeft(), notNullValue());
-			assertThat("element appended is RED", treeTest.getRoot().getLeft().getColor(), equalTo(Color.RED));
-			assertThat("element absent in right", treeTest.getRoot().getRight(), equalTo(null));
+		if (classUnderTest.getRoot().toString().compareTo(elementTest.getElement().toString()) == -1) {
+			assertThat("element appended in left", classUnderTest.getRoot().getLeft(), notNullValue());
+			assertThat("element appended is RED", classUnderTest.getRoot().getLeft().getColor(), equalTo(Color.RED));
+			assertThat("element absent in right", classUnderTest.getRoot().getRight(), equalTo(null));
 			
 		}
 		
 		// ROOT RIGHT
 		else {
-			assertThat("element appended in right", treeTest.getRoot().getRight(), notNullValue());
-			assertThat("element appended is RED", treeTest.getRoot().getRight().getColor(), equalTo(Color.RED));
-			assertThat("element absent in left", treeTest.getRoot().getLeft(), equalTo(null));
+			assertThat("element appended in right", classUnderTest.getRoot().getRight(), notNullValue());
+			assertThat("element appended is RED", classUnderTest.getRoot().getRight().getColor(), equalTo(Color.RED));
+			assertThat("element absent in left", classUnderTest.getRoot().getLeft(), equalTo(null));
 			
 		}
 		
@@ -76,12 +71,11 @@ public class RbTreeInsertTest {
 	// inserimento di un nodo in un albero composto da 6 elementi
 	@Test
 	public void testInsertSix() {
-		RbTree<String> treeTest = RbTreeGenerator.six();		
+		RbTree<String> classUnderTest = RbTreeGenerator.six();		
 		BasicRbTreeDecorator<String> elementTest = new BasicRbTreeDecorator<String>(this.fairy.textProducer().latinSentence()); 
-		treeTest.insert(elementTest);
-		RbTreeGenerator.writeDotFile(treeTest);
-		assertThat("not null in right-right", treeTest.getRoot().getRight().getRight(), notNullValue());
-		assertThat("RED in right-right", treeTest.getRoot().getRight().getRight().getColor(), equalTo(Color.RED));
+		classUnderTest.insert(elementTest);
+		assertThat("not null in right-right", classUnderTest.getRoot().getRight().getRight(), notNullValue());
+		assertThat("RED in right-right", classUnderTest.getRoot().getRight().getRight().getColor(), equalTo(Color.RED));
 
 	}
 
