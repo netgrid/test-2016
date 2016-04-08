@@ -16,7 +16,6 @@ public class RbTreeInsertTest {
 	@Before
 	public void init() {
 		this.fairy = Fairy.create();
-		
 	}
 	
 	
@@ -29,7 +28,6 @@ public class RbTreeInsertTest {
 		assertThat("one element", classUnderTest.getRoot(), notNullValue());
 		assertThat("null left", classUnderTest.getRoot().getLeft(), equalTo(null));
 		assertThat("null right", classUnderTest.getRoot().getRight(), equalTo(null));
-		
 	}
 	
 	
@@ -54,7 +52,6 @@ public class RbTreeInsertTest {
 			assertThat("element appended in left", classUnderTest.getRoot().getLeft(), notNullValue());
 			assertThat("element appended is RED", classUnderTest.getRoot().getLeft().getColor(), equalTo(Color.RED));
 			assertThat("element absent in right", classUnderTest.getRoot().getRight(), equalTo(null));
-			
 		}
 		
 		// ROOT RIGHT
@@ -62,9 +59,7 @@ public class RbTreeInsertTest {
 			assertThat("element appended in right", classUnderTest.getRoot().getRight(), notNullValue());
 			assertThat("element appended is RED", classUnderTest.getRoot().getRight().getColor(), equalTo(Color.RED));
 			assertThat("element absent in left", classUnderTest.getRoot().getLeft(), equalTo(null));
-			
 		}
-		
 	}
 		
 	
@@ -76,7 +71,6 @@ public class RbTreeInsertTest {
 		classUnderTest.insert(elementTest);
 		assertThat("not null in right-right", classUnderTest.getRoot().getRight().getRight(), notNullValue());
 		assertThat("RED in right-right", classUnderTest.getRoot().getRight().getRight().getColor(), equalTo(Color.RED));
-
 	}
 
 }

@@ -3,41 +3,34 @@ package it.netgrid.rbtrees;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import io.codearte.jfairy.Fairy;
 
 public class RbTreeLeftRotateTest {
-	private RbTree<String> classUnderTest;
+	
 	private Fairy fairy = Fairy.create();
 	BasicRbTreeDecorator<String> element = new BasicRbTreeDecorator<String>(fairy.textProducer().latinSentence());
 	
-	@Before
-	public void init() {
-		this.fairy = Fairy.create();
-		
-	}
-	
 	@Test
 	public void testOne() {
-		RbTree<String> output = RbTreeGenerator.six();
-		output.leftRotate(output.getRoot());
+		RbTree<String> classUnderTest = RbTreeGenerator.six();
+		classUnderTest.leftRotate(classUnderTest.getRoot());
 		
 		
 	}
 	
 	@Test
 	public void testTwo() {
-		RbTree<String> output = RbTreeGenerator.six();
-		output.rightRotate(output.getRoot());
+		RbTree<String> classUnderTest = RbTreeGenerator.six();
+		classUnderTest.rightRotate(classUnderTest.getRoot());
 		
 		
 	}
 	
 	@Test
 	public void testLeftRotateSix(){
-		classUnderTest =RbTreeGenerator.six();
+		RbTree<String> classUnderTest =RbTreeGenerator.six();
 		RbTreeElement x = classUnderTest.getRoot().getLeft();
 		RbTreeElement y = classUnderTest.getRoot().getLeft().getRight();
 		RbTreeElement z = classUnderTest.getRoot().getLeft().getLeft();
@@ -49,19 +42,9 @@ public class RbTreeLeftRotateTest {
 	
 	@Test
 	public void testFour() {
-		RbTree<String> output = RbTreeGenerator.six();
-		output.leftRotate(output.getRoot().getLeft());
+		RbTree<String> classUnderTest = RbTreeGenerator.six();
+		classUnderTest.leftRotate(classUnderTest.getRoot().getLeft());
 		
 		
-	}
-	
-	private static String multi(String base, int multi) {
-		String retval = "";
-		for(int i=0; i<multi; i++) {
-			retval += base;
-		}
-		
-		return retval;
-	}
-	
+	}	
 }
