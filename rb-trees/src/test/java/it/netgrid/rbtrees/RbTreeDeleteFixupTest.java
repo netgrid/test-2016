@@ -24,7 +24,10 @@ public class RbTreeDeleteFixupTest {
 		this.classunderTest.deleteFixup(classunderTest.getRoot());
 		//assertThat("null equals null", result, equalTo(0));
 		assertThat("null root", classunderTest.getRoot(), equalTo(null));
+<<<<<<< HEAD
 		RbTreeGenerator.writeDotFile(classunderTest);
+=======
+>>>>>>> dca32b3fc982c0b80c77e604dfee2c2c9cc0fa43
 	}
 	
 	@Test
@@ -34,17 +37,26 @@ public class RbTreeDeleteFixupTest {
 		assertThat("root is black", classunderTest.getRoot().getColor(), equalTo(Color.BLACK));
 		assertThat("null left", classunderTest.getRoot().getLeft(), equalTo(null));
 		assertThat("null right", classunderTest.getRoot().getRight(), equalTo(null));
+<<<<<<< HEAD
 		RbTreeGenerator.writeDotFile(classunderTest);
+=======
+		
+>>>>>>> dca32b3fc982c0b80c77e604dfee2c2c9cc0fa43
 	}
 
 	@Test
 	public void testSix() {
 		classunderTest = RbTreeGenerator.six();
+<<<<<<< HEAD
 		this.classunderTest.deleteFixup(classunderTest.getRoot().getLeft().getLeft());
+=======
+		this.classunderTest.deleteFixup(classunderTest.getRoot());
+>>>>>>> dca32b3fc982c0b80c77e604dfee2c2c9cc0fa43
 		assertThat("root is black", classunderTest.getRoot().getColor(), equalTo(Color.BLACK));
 		assertThat("not null left", classunderTest.getRoot().getLeft(), notNullValue());
 		assertThat("not null right", classunderTest.getRoot().getRight(), notNullValue());
 		assertThat("not equal", classunderTest.getRoot().getLeft(), not(equals(classunderTest.getRoot().getRight())));	
+<<<<<<< HEAD
 		RbTreeGenerator.writeDotFile(classunderTest);
 	}
 	@Test
@@ -88,6 +100,22 @@ public class RbTreeDeleteFixupTest {
 
 	}
 
+=======
+	}
+	
+	@Test
+	public void testSpec() {
+		classunderTest = RbTreeGenerator.six();
+		//RbTreeElement<String> left= parent.getLeft();
+		//this.classunderTest.deleteFixup(classunderTest.getRoot());
+		this.classunderTest.deleteFixup(classunderTest.getRoot().getLeft().getLeft());
+		assertThat("root is black", classunderTest.getRoot().getColor(), equalTo(Color.BLACK));
+		assertThat("null left", classunderTest.getRoot().getLeft(), notNullValue());
+		assertThat("null right", classunderTest.getRoot().getRight(), notNullValue());
+		
+	}
+	
+>>>>>>> dca32b3fc982c0b80c77e604dfee2c2c9cc0fa43
 }
 		
 	
