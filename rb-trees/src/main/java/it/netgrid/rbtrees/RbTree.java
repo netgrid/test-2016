@@ -130,15 +130,15 @@ public class RbTree<T extends Comparable<String>> {
 			}
 
 		}
-<<<<<<< HEAD
+
 			if(element!=null){
 				element.setColor(Color.BLACK);
 			}
-=======
+
 		if (element != null) {
 			element.setColor(Color.BLACK);
 		}
->>>>>>> dca32b3fc982c0b80c77e604dfee2c2c9cc0fa43
+
 	}
 
 	public void insert(T element) {

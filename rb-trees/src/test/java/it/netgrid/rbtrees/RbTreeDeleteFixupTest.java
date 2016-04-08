@@ -24,10 +24,9 @@ public class RbTreeDeleteFixupTest {
 		this.classunderTest.deleteFixup(classunderTest.getRoot());
 		//assertThat("null equals null", result, equalTo(0));
 		assertThat("null root", classunderTest.getRoot(), equalTo(null));
-<<<<<<< HEAD
+
 		RbTreeGenerator.writeDotFile(classunderTest);
-=======
->>>>>>> dca32b3fc982c0b80c77e604dfee2c2c9cc0fa43
+
 	}
 	
 	@Test
@@ -37,86 +36,74 @@ public class RbTreeDeleteFixupTest {
 		assertThat("root is black", classunderTest.getRoot().getColor(), equalTo(Color.BLACK));
 		assertThat("null left", classunderTest.getRoot().getLeft(), equalTo(null));
 		assertThat("null right", classunderTest.getRoot().getRight(), equalTo(null));
-<<<<<<< HEAD
+
 		RbTreeGenerator.writeDotFile(classunderTest);
-=======
+
 		
->>>>>>> dca32b3fc982c0b80c77e604dfee2c2c9cc0fa43
+
 	}
 
 	@Test
 	public void testSix() {
 		classunderTest = RbTreeGenerator.six();
-<<<<<<< HEAD
 		this.classunderTest.deleteFixup(classunderTest.getRoot().getLeft().getLeft());
-=======
-		this.classunderTest.deleteFixup(classunderTest.getRoot());
->>>>>>> dca32b3fc982c0b80c77e604dfee2c2c9cc0fa43
+		//this.classunderTest.deleteFixup(classunderTest.getRoot());
 		assertThat("root is black", classunderTest.getRoot().getColor(), equalTo(Color.BLACK));
 		assertThat("not null left", classunderTest.getRoot().getLeft(), notNullValue());
 		assertThat("not null right", classunderTest.getRoot().getRight(), notNullValue());
-		assertThat("not equal", classunderTest.getRoot().getLeft(), not(equals(classunderTest.getRoot().getRight())));	
-<<<<<<< HEAD
+		assertThat("not equal", classunderTest.getRoot().getLeft(), not(equals(classunderTest.getRoot().getRight())));
+		redNodeCheck(classunderTest.getRoot());
+		blackPathCountCheck(classunderTest.getRoot());
 		RbTreeGenerator.writeDotFile(classunderTest);
+		
 	}
+
 	@Test
 	public void testSpec() {
 		classunderTest = RbTreeGenerator.six();
-		//RbTreeElement<String> left= parent.getLeft();
-		//this.classunderTest.deleteFixup(classunderTest.getRoot().getLeft().getRight());
 		this.classunderTest.deleteFixup(classunderTest.getRoot().getLeft().getLeft());
 		assertThat("root is black", classunderTest.getRoot().getColor(), equalTo(Color.BLACK));
 		assertThat("null left", classunderTest.getRoot().getLeft(), equalTo(null));
 		assertThat("null right", classunderTest.getRoot().getRight(), equalTo(null));
+		//blackPathCountCheck(classunderTest.getRoot());
 		RbTreeGenerator.writeDotFile(classunderTest);
 	}
 
-	public int Visita(RbTreeElement<String> element) {
-		int count, countLeft, countRight;
-
-		if (element == null) {
-			count = 1;
-			return count;
-
-		} else {
-			count = element.isBlack() ? 1 : 0;
-			countRight = Visita(element.getRight());
-			countLeft = Visita(element.getLeft());
-			return count;
-		}
-
-	}
-
-	public void Test(RbTreeElement<String> element) {
-
+	public void redNodeCheck(RbTreeElement<String> element) {
 		if (element == null) {
 			return;
 		}
+
 		if (element.isRed()) {
 			boolean leftCheck = element.getLeft() == null ? true : element.getLeft().isBlack();
-			boolean RightCheck = element.getRight() == null ? true : element.getLeft().isBlack();
-
+			boolean rightCheck = element.getRight() == null ? true : element.getRight().isBlack();
+			assertThat("child left is black", leftCheck, equalTo(true));
+			assertThat("child right is black", rightCheck, equalTo(true));
 		}
 
+		redNodeCheck(element.getLeft());
+		redNodeCheck(element.getRight());
 	}
 
-=======
+	// Ogni percorso dalla radice ha lo stesso numero di Nodi Neri
+	public int blackPathCountCheck(RbTreeElement<String> element) {
+		int counter, counterL, counterR;
+		if (element == null) {
+			counter = 1;
+			return counter;
+		} else {
+			counter = element.isBlack() ? 1 : 0;
+			counterL = blackPathCountCheck(element.getLeft());
+			counterR = blackPathCountCheck(element.getRight());
+			assertThat("black count L/R are equal", counterL, equalTo(counterR));
+			return counterL + counter;
+		}
 	}
-	
-	@Test
-	public void testSpec() {
-		classunderTest = RbTreeGenerator.six();
-		//RbTreeElement<String> left= parent.getLeft();
-		//this.classunderTest.deleteFixup(classunderTest.getRoot());
-		this.classunderTest.deleteFixup(classunderTest.getRoot().getLeft().getLeft());
-		assertThat("root is black", classunderTest.getRoot().getColor(), equalTo(Color.BLACK));
-		assertThat("null left", classunderTest.getRoot().getLeft(), notNullValue());
-		assertThat("null right", classunderTest.getRoot().getRight(), notNullValue());
-		
-	}
-	
->>>>>>> dca32b3fc982c0b80c77e604dfee2c2c9cc0fa43
+
 }
+
+
+
 		
 	
   
