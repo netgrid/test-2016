@@ -9,19 +9,17 @@ public class RbTree<T extends Comparable<String>> {
 	// procedura che restituisce un puntatore all'elemeneto minimo del
 	// sottoalbero con radice in un nodo x
 	private RbTreeElement<T> treeMinimum(RbTreeElement<T> element) {
-		RbTreeElement<T> result = null;
-		while (!(element.getLeft().equals(null))) {
-			result = element.getLeft();
+		while (element.getLeft() != null) {
+			element = element.getLeft();
 		}
-		return result;
+		return element;
 	}
 
-	// procedura che restituisce un puntatore all'elemeneto massimo del
-	// sottoalbero con radice in un nodo x
-	private RbTreeElement<T> treeMaximum(RbTreeElement<T> element) {
-		RbTreeElement<T> result = null;
-		while (!(element.getRight().equals(null))) {
-			result = element.getRight();
+	//procedura che restituisce  un puntatore all'elemeneto massimo del sottoalbero con radice in un nodo x
+	private RbTreeElement<T> treeMaximum(RbTreeElement<T> element){
+		RbTreeElement<T> result=null;
+		while(!(element.getRight()==null)){
+			result=element.getRight();
 		}
 		return result;
 	}
@@ -71,14 +69,13 @@ public class RbTree<T extends Comparable<String>> {
 	}
 
 	private void insertFixup(RbTreeElement<T> element) {
-
 	}
 
-	private void deleteFixup(RbTreeElement<T> element) {
+	public void deleteFixup(RbTreeElement<T> element) {
 	}
 
 	public void insert(RbTreeElement<T> element) {
-		if (element.getElement() == null) {
+		if (element == null || element.getElement() == null) {
 			return;
 		}
 		RbTreeElement<T> y = null;
@@ -104,65 +101,94 @@ public class RbTree<T extends Comparable<String>> {
 		element.setLeft(null);
 		element.setRight(null);
 		element.setColor(Color.RED);
+		this.insertFixup(element);
 	}
 
+	// Funzione che restituisce il successore del nodo da eliminare
 	public RbTreeElement<T> treeSuccessor(RbTreeElement<T> element) {
 		RbTreeElement<T> result;
-		if (element.getRight().equals(null)) {
+		if (element.getRight() != null) {
 			return treeMinimum(element.getRight());
 		}
 		result = element.getParent();
-		while ((!(result.equals(null))) && (element.equals(result.getRight()))) {
+		while ((result != null) && (element.equals(result.getRight()))) {
 			element = result;
 			result = result.getParent();
 		}
 		return result;
 	}
-
-	// funzione che elemina un nodo dall'albero
+	
+	/* Funzione che elemina un nodo dall'albero
+	 * -Ritorna null se viene inserito come nodo da eliminare null oppure una radice con {0} figli	  
+	 * -Ritorna il nodo eliminato se il nodo ha {0, 1} figli
+	 * -Ritorna il nodo successore del nodo eliminato se il nodo ha {2} figli
+	 */
 	public RbTreeElement<T> delete(RbTreeElement<T> elementZ) {
 		RbTreeElement<T> result;
 		RbTreeElement<T> elementX;
-
-		// 1-6----------------------------------------------------------------------------------------------|
-		if ((elementZ.getLeft().equals(null)) && (elementZ.getRight().equals(null))) {
-			result = elementZ;
-		} else {
-			result = treeSuccessor(elementZ);
+		
+		
+		//ritorna null se il tree è vuoto
+		if(elementZ==(null)){
+			
+			return null;
 		}
-		if (!(result.getLeft().equals(null))) {
-			elementX = result.getLeft();
-		} else {
-			elementX = result.getRight();
+		
+		
+		//eliminazione radice senza figli
+		if(elementZ == this.getRoot()){
+			if((elementZ.getLeft()==null)&&(elementZ.getRight()==null)){
+			
+				return null;
+			}
 		}
 
-		// 7------------------------------------------------------------------------------------------------|
+		
+		//1-6----------------------------------------------------------------------------------------------|
+		if((elementZ.getLeft()==null)||(elementZ.getRight()==null)){
+			result= elementZ;	
+		}
+		else{
+			result=treeSuccessor(elementZ);
+		}
+		if(!(result.getLeft()==null)){
+			elementX=result.getLeft();
+		}
+		else{
+			elementX=result.getRight();
+		}
+		
+		
+		
+		//7------------------------------------------------------------------------------------------------|
+		if(!(elementX==null)){
 		elementX.setParent(result.getParent());
-
-		// 8-12---------------------------------------------------------------------------------------------|
-		if (result.getParent().equals(null)) {
+		}
+		//8-12---------------------------------------------------------------------------------------------|
+		if(result.getParent()==null){
 			this.setRoot(elementX);
-		} else if (result.equals(result.getParent().getLeft())) {
+		}
+		else if (result.equals(result.getParent().getLeft())) {
 			result.getParent().setLeft(elementX);
-		} else {
+		}
+		else {
 			result.getParent().setRight(elementX);
 		}
-
-		// 13-15--------------------------------------------------------------------------------------------|
-		if (!(result.equals(elementZ))) {
-			// copia dati satellite
-			elementZ.setColor(result.getColor());
-			elementZ.setLeft(result.getRight());
-			elementZ.setRight(result.getRight());
-			elementZ.setParent(result.getParent());
+		
+		//13-15--------------------------------------------------------------------------------------------|
+		if(!(result.equals(elementZ))){
+			//copia dati satellite
+			elementZ.setElement(result.getElement());
+			
+			
 		}
-
-		// 16-17--------------------------------------------------------------------------------------------|
-		if (result.getColor().equals(Color.BLACK)) {
+		
+		//16-17--------------------------------------------------------------------------------------------|
+		if(result.getColor().equals(Color.BLACK)){
 			deleteFixup(elementX);
 		}
-
-		// 18-----------------------------------------------------------------------------------------------|
+		
+		//18-----------------------------------------------------------------------------------------------|
 		return result;
 	}
 
