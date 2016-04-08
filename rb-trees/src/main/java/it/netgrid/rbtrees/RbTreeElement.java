@@ -2,13 +2,13 @@ package it.netgrid.rbtrees;
 
 public interface RbTreeElement<T> extends Comparable<String> {
 
+
 	public enum Color {
 		BLACK, RED
 	}
 
-	public boolean isBlack();
-
-	public boolean isRed();
+	public boolean isBlack(); 
+	public boolean isRed(); 
 
 	public RbTreeElement<T> getParent();
 
