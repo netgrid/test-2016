@@ -25,10 +25,10 @@ public class RbTree<T extends Comparable<String>> {
 	}
 
 	public void leftRotate(RbTreeElement<T> element) {
-		RbTreeElement<T> y = element.getRight(); // Imposto y
-		element.setRight(y.getLeft()); // Sposto il sottoalbero sinistro di x
-										// nel sottoalbero
-		if (y.getLeft() != null) { // sinistro destro di x
+		RbTreeElement<T> y = element.getRight(); 		// Imposto y
+		element.setRight(y.getLeft()); 			// Sposto il sottoalbero sinistro di x
+												// nel sottoalbero
+		if (y.getLeft() != null) { 			// sinistro destro di x
 			y.getLeft().setParent(element);
 		}
 		y.setParent(element.getParent()); // collego il padre di x con quello di
