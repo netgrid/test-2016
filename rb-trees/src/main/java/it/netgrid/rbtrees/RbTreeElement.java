@@ -13,9 +13,7 @@ public interface RbTreeElement<T> extends Comparable<String> {
 	public RbTreeElement<T> getParent();
 
 	public Color getColor();
-
 	public RbTreeElement<T> getLeft();
-
 	public RbTreeElement<T> getRight();
 
 	public void setParent(RbTreeElement<T> parent);
@@ -27,4 +25,7 @@ public interface RbTreeElement<T> extends Comparable<String> {
 	public void setColor(Color color);
 
 	public T getElement();
+
+	public void setElement(T element);
+	
 }

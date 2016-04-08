@@ -68,4 +68,9 @@ public class BasicRbTreeDecorator<T> implements RbTreeElement<T> {
 		this.parent = parent;
 	}
 
+	@Override
+	public void setElement(T element) {
+		this.element = element;
+	}
+
 }
