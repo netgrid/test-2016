@@ -36,7 +36,6 @@ public class RbTreeDeleteFixupTest {
 		assertThat("root is black", classunderTest.getRoot().getColor(), equalTo(Color.BLACK));
 		assertThat("null left", classunderTest.getRoot().getLeft(), equalTo(null));
 		assertThat("null right", classunderTest.getRoot().getRight(), equalTo(null));
-
 		RbTreeGenerator.writeDotFile(classunderTest);
 
 		
